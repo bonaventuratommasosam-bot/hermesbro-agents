@@ -92,4 +92,4 @@ MIT — see [LICENSE](LICENSE)
 
 - [Hermes Agent](https://hermes-agent.nousresearch.com) — open-source AI agent framework
 - Telegram Bot API
-- Google AI / OpenRouter / any OpenAI-compatible API
+- DeepSeek V4 Pro — core inference engine (via OpenRouter)
