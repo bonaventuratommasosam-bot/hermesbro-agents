@@ -1,0 +1,2 @@
+- Cliente PMI italiana. Preferisce risposte concise e operative.
+- Vuole automazione completa. Intervento umano solo per criticità.

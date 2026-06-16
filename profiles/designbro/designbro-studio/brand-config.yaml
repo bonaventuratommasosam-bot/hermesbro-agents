@@ -1,0 +1,35 @@
+# DesignBro Studio — configurazione cliente
+# Modifica questo file o usa: python3 .../configure_brand.py set <chiave> <valore>
+
+brand:
+  name: ""                      # es. "Caffè Rossi"
+  industry: ""                  # food, tech, fashion, finance, legal, retail
+  tagline: ""
+  keywords: ""                  # parole chiave brand (es. artigianale, premium, veloce)
+  timezone: "Europe/Rome"
+
+visual:
+  primary_color: ""             # HEX es. #1E3A5F (opzionale)
+  mood: "professional"          # professional | warm | bold | minimal
+  style: "modern"               # modern | classic | playful | luxury
+
+telegram:
+  group_chat_id: ""             # gruppo per preview design
+  admin_chat_id: ""             # DM admin per approvazioni
+  allow_all_users: true
+  require_approval: true        # true = nessun deliverable finale senza OK esplicito
+
+roles:
+  admin: []                     # telegram user id
+  reviewers: []                 # chi può approvare design
+
+output:
+  formats: ["logo", "palette", "typography", "social", "menu"]
+  archive_dir: "cache/designs"
+
+cron:
+  brand_checkin: "0 9 1 * *"    # promemoria brand kit mensile
+  enabled: false
+
+language:
+  default: "it"

@@ -1,0 +1,15 @@
+logs/
+cache/
+sessions/
+.dreaming/
+state.db*
+skills/.usage.json
+skills/.curator_state
+skills/.curator_backups/
+skills/.bundled_manifest
+.skills_prompt_snapshot.json
+*.pid
+*.lock
+cron/output/
+cron/.tick.lock
+__pycache__/

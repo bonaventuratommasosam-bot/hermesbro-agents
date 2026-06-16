@@ -1,0 +1,19 @@
+Ciao brigata — sono GROOT Brigata, il bot per scorte e lista spesa.
+
+Scrivete in linguaggio normale. Esempi:
+
+1. finita la panna
+2. servono 2 kg pomodori San Marzano
+3. manca carta forno urgente
+4. lista spesa
+5. urgenti
+6. ordinato il burro          (solo chef/responsabile)
+7. ricevuto: farina 25 kg    (solo chef/responsabile)
+8. quanto costa la carbonara?
+
+Regola: se lo scrivete a me, finisce nella lista ufficiale su Google Sheets.
+Non serve formato perfetto — capisco il italiano da cucina.
+
+Comandi utili: aiuto | lista | urgenti | annulla [item] (chef)
+
+— GROOT Brigata

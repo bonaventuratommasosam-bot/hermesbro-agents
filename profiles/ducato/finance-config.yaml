@@ -1,0 +1,36 @@
+client:
+  name: "Nome Cliente (da configurare)"
+  sector: "da configurare"
+  base_value: 25000
+  monthly_burn: 4200
+  timezone: Europe/Rome
+risk:
+  max_single_asset_pct: 15
+  max_crypto_pct: 30
+  min_margin_pct: 15
+  runway_alert_months: 3
+telegram:
+  group_chat_id: "CHAT_ID_PLACEHOLDER"
+  admin_chat_id: "ADMIN_CHAT_ID_PLACEHOLDER"
+roles:
+  admin:
+  - ADMIN_USER_ID_PLACEHOLDER
+portfolio:
+  assets:
+  - name: Cash
+    value: 10000
+    class: liquid
+  - name: ETF World
+    value: 8000
+    class: equity
+  - name: BTC
+    value: 5000
+    class: crypto
+  - name: Obbligazioni
+    value: 2000
+    class: bond
+cron:
+  monthly_report: 0 9 1 * *
+  enabled: false
+language:
+  default: it

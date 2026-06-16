@@ -1,0 +1,22 @@
+org:
+  name: YOUR_ORG_NAME
+  founder_chat_id: 'YOUR_TELEGRAM_CHAT_ID'
+  timezone: Europe/Rome
+fleet:
+  report_time: 08:00
+  include_trading: false
+  agents: []
+telegram:
+  group_chat_id: 'YOUR_GROUP_CHAT_ID'
+  admin_chat_id: 'YOUR_ADMIN_CHAT_ID'
+roles:
+  admin:
+  - 0  # placeholder — replace with your Telegram user ID
+reports:
+  daily_enabled: false
+  last_brief: ''
+cron:
+  daily_brief: 0 8 * * *
+  enabled: false
+language:
+  default: it

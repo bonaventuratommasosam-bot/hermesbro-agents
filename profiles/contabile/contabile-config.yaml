@@ -1,0 +1,25 @@
+company:
+  name: ''
+  piva: ''
+  regime: forfettario
+  iva_regime: trimestrale
+  sector: ''
+  timezone: Europe/Rome
+fiscal:
+  default_iva: 22
+  food_cost_alert_pct: 35
+  anomaly_threshold_eur: 500
+telegram:
+  group_chat_id: ''
+  admin_chat_id: ''
+  alert_days_before: 7
+roles:
+  admin: []
+ledger:
+  path: cache/ledger.jsonl
+cron:
+  deadline_check: 0 8 * * 1-5
+  weekly_report: 0 9 * * 1
+  enabled: false
+language:
+  default: it

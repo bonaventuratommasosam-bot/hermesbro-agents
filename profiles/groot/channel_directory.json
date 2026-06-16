@@ -1,0 +1,49 @@
+{
+  "updated_at": "{{UPDATED_AT}}",
+  "platforms": {
+    "telegram": [
+      {
+        "id": "{{TELEGRAM_CHAT_ID}}:{{TELEGRAM_THREAD_ID}}",
+        "name": "User DM / topic {{TELEGRAM_THREAD_ID}}",
+        "type": "dm",
+        "thread_id": "{{TELEGRAM_THREAD_ID}}"
+      },
+      {
+        "id": "{{TELEGRAM_CHAT_ID}}:{{TELEGRAM_THREAD_ID_2}}",
+        "name": "User DM / topic {{TELEGRAM_THREAD_ID_2}}",
+        "type": "dm",
+        "thread_id": "{{TELEGRAM_THREAD_ID_2}}"
+      },
+      {
+        "id": "{{TELEGRAM_GROUP_CHAT_ID}}",
+        "name": "Gruppo Brigata",
+        "type": "group",
+        "thread_id": null
+      }
+    ],
+    "discord": [],
+    "whatsapp": [],
+    "slack": [],
+    "signal": [],
+    "mattermost": [],
+    "matrix": [],
+    "homeassistant": [],
+    "email": [],
+    "sms": [],
+    "dingtalk": [],
+    "msgraph_webhook": [],
+    "feishu": [],
+    "wecom": [],
+    "wecom_callback": [],
+    "weixin": [],
+    "bluebubbles": [],
+    "qqbot": [],
+    "yuanbao": [],
+    "google_chat": [],
+    "irc": [],
+    "line": [],
+    "ntfy": [],
+    "simplex": [],
+    "teams": []
+  }
+}

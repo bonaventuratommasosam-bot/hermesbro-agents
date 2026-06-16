@@ -1,0 +1,11 @@
+{
+  "jobs": [
+    {
+      "id": "deadline_scan",
+      "schedule": "0 8 * * 1",
+      "message": "⚖️ Scan scadenze legali settimanale. Scrivi *scadenze* o *normative*.",
+      "target": "telegram:{{TELEGRAM_CHAT_ID}}",
+      "enabled": false
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "updated_at": "REPLACE_WITH_TIMESTAMP",
+  "platforms": {
+    "telegram": [
+      {
+        "id": "ADMIN_CHAT_ID_PLACEHOLDER",
+        "name": "Admin_User",
+        "type": "dm",
+        "thread_id": null
+      }
+    ],
+    "discord": [],
+    "whatsapp": [],
+    "slack": [],
+    "signal": [],
+    "mattermost": [],
+    "matrix": [],
+    "homeassistant": [],
+    "email": [],
+    "sms": [],
+    "dingtalk": [],
+    "msgraph_webhook": [],
+    "feishu": [],
+    "wecom": [],
+    "wecom_callback": [],
+    "weixin": [],
+    "bluebubbles": [],
+    "qqbot": [],
+    "yuanbao": [],
+    "google_chat": [],
+    "irc": [],
+    "line": [],
+    "ntfy": [],
+    "simplex": [],
+    "teams": []
+  }
+}

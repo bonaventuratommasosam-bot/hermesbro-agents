@@ -1,0 +1,30 @@
+lab:
+  name: R&D Lab Demo
+  focus: skills
+  supervisor: supervisor
+  timezone: Europe/Rome
+experiments:
+  max_active: 5
+  require_review: true
+telegram:
+  group_chat_id: '{{TELEGRAM_CHAT_ID}}'
+  admin_chat_id: '{{TELEGRAM_CHAT_ID}}'
+roles:
+  admin:
+  - 0
+queue:
+  items:
+  - id: PROP-da00ac
+    hypothesis: Skill bus-send v2
+    status: proposed
+    created: '2026-06-13T12:16:36.296556'
+  - id: EXP-351c41
+    hypothesis: Wizard i18n per tutti i bot
+    focus: skills
+    status: active
+    created: '2026-06-13T12:16:36.428267'
+cron:
+  weekly_digest: 0 10 * * 5
+  enabled: false
+language:
+  default: it

@@ -1,0 +1,85 @@
+{
+  "updated_at": "2026-06-16T09:52:21.717473",
+  "platforms": {
+    "telegram": [
+      {
+        "id": "{{TELEGRAM_CHAT_ID}}",
+        "name": "Utente Admin",
+        "type": "dm",
+        "thread_id": null
+      },
+      {
+        "id": "{{TELEGRAM_CHAT_ID}}:31512",
+        "name": "Utente Admin / topic 31512",
+        "type": "dm",
+        "thread_id": "31512"
+      },
+      {
+        "id": "{{TELEGRAM_CHAT_ID}}:31344",
+        "name": "Utente Admin / topic 31344",
+        "type": "dm",
+        "thread_id": "31344"
+      },
+      {
+        "id": "{{TELEGRAM_CHAT_ID}}:31928",
+        "name": "Utente Admin / topic 31928",
+        "type": "dm",
+        "thread_id": "31928"
+      },
+      {
+        "id": "{{TELEGRAM_CHAT_ID}}:31938",
+        "name": "Utente Admin / topic 31938",
+        "type": "dm",
+        "thread_id": "31938"
+      },
+      {
+        "id": "{{TELEGRAM_GROUP_ID}}",
+        "name": "Gruppo Alert Legali",
+        "type": "group",
+        "thread_id": null
+      },
+      {
+        "id": "{{TELEGRAM_CHAT_ID}}:31683",
+        "name": "Utente Admin / topic 31683",
+        "type": "dm",
+        "thread_id": "31683"
+      },
+      {
+        "id": "{{TELEGRAM_CHAT_ID}}:33866",
+        "name": "Utente Admin / topic 33866",
+        "type": "dm",
+        "thread_id": "33866"
+      },
+      {
+        "id": "{{TELEGRAM_CHAT_ID}}:34861",
+        "name": "Utente Admin / topic 34861",
+        "type": "dm",
+        "thread_id": "34861"
+      }
+    ],
+    "discord": [],
+    "whatsapp": [],
+    "slack": [],
+    "signal": [],
+    "mattermost": [],
+    "matrix": [],
+    "homeassistant": [],
+    "email": [],
+    "sms": [],
+    "dingtalk": [],
+    "msgraph_webhook": [],
+    "feishu": [],
+    "wecom": [],
+    "wecom_callback": [],
+    "weixin": [],
+    "bluebubbles": [],
+    "qqbot": [],
+    "yuanbao": [],
+    "google_chat": [],
+    "irc": [],
+    "line": [],
+    "ntfy": [],
+    "simplex": [],
+    "teams": []
+  }
+}

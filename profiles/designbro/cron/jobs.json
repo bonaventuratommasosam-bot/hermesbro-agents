@@ -1,0 +1,11 @@
+{
+  "jobs": [
+    {
+      "id": "brand_checkin",
+      "schedule": "0 9 1 * *",
+      "message": "🎨 Check-in brand kit mensile. Scrivi *brand kit* per rivedere palette, font e logo.",
+      "target": "telegram:",
+      "enabled": false
+    }
+  ]
+}

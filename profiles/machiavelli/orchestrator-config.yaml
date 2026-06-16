@@ -1,0 +1,38 @@
+org:
+  name: HermesBro Orchestrator Demo
+  max_parallel: 3
+  debate_rounds: 2
+  timezone: Europe/Rome
+fleet:
+  agents:
+  - frank
+  - groot
+  - contabile
+  - ducato
+  - lawrenzo
+  - designbro
+  - wannabe
+  - sentinel
+  default_priority: normal
+workflows:
+  auto_dispatch: false
+  require_approval: true
+telegram:
+  group_chat_id: '<GROUP_CHAT_ID>'
+  admin_chat_id: '<ADMIN_CHAT_ID>'
+roles:
+  admin:
+  - <ADMIN_USER_ID>
+dispatch:
+  queue:
+  - id: DISP-d189cb
+    target: frank
+    task: Demo go-live health check
+    priority: normal
+    status: queued
+    created: '2026-06-13T12:16:16.851105'
+cron:
+  daily_brief: 0 8 * * *
+  enabled: false
+language:
+  default: it

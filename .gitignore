@@ -1,0 +1,30 @@
+# Runtime
+__pycache__/
+*.pyc
+.env
+*.env
+state.db*
+*.lock
+*.pid
+
+# Cache
+cache/
+image_cache/
+audio_cache/
+output/
+logs/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Hermes runtime
+sessions/
+cron/output/
+.dreaming/artifacts/

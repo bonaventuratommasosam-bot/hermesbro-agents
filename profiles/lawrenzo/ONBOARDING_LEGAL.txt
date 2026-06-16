@@ -1,0 +1,9 @@
+Benvenuto in Lawrenzo Legal!
+
+1. Start → scrivi: setup
+2. Rispondi alle 5 domande (azienda, settore, foro, gruppo, tuo ID)
+3. Prova: contratto nda
+
+Comandi: gdpr check | normative | config mostra
+
+Ogni bozza richiede revisione di un legale abilitato prima della firma.

@@ -1,0 +1,5 @@
+Sentinel Audit attivo.
+
+1. Start → setup (5 domande)
+2. Prova: ssl <dominio>
+3. Ordina audit: Smart Contract $24.99 | VPS Security $49.99

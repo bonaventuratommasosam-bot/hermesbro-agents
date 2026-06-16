@@ -1,0 +1,19 @@
+{
+  "pid": 0,
+  "kind": "hermes-gateway",
+  "argv": ["hermes", "gateway", "run"],
+  "start_time": 0,
+  "gateway_state": "stopped",
+  "exit_reason": null,
+  "restart_requested": false,
+  "active_agents": 0,
+  "platforms": {
+    "telegram": {
+      "state": "disconnected",
+      "error_code": null,
+      "error_message": null,
+      "updated_at": "1970-01-01T00:00:00+00:00"
+    }
+  },
+  "updated_at": "1970-01-01T00:00:00+00:00"
+}

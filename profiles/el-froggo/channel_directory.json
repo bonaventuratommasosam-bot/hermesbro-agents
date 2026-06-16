@@ -1,0 +1,49 @@
+{
+  "updated_at": "1970-01-01T00:00:00.000000",
+  "platforms": {
+    "telegram": [
+      {
+        "id": "YOUR_CHAT_ID:THREAD_ID",
+        "name": "User / topic",
+        "type": "dm",
+        "thread_id": "THREAD_ID"
+      },
+      {
+        "id": "YOUR_GROUP_CHAT_ID",
+        "name": "Group Name",
+        "type": "group",
+        "thread_id": null
+      },
+      {
+        "id": "YOUR_CHAT_ID",
+        "name": "User",
+        "type": "dm",
+        "thread_id": null
+      }
+    ],
+    "discord": [],
+    "whatsapp": [],
+    "slack": [],
+    "signal": [],
+    "mattermost": [],
+    "matrix": [],
+    "homeassistant": [],
+    "email": [],
+    "sms": [],
+    "dingtalk": [],
+    "msgraph_webhook": [],
+    "feishu": [],
+    "wecom": [],
+    "wecom_callback": [],
+    "weixin": [],
+    "bluebubbles": [],
+    "qqbot": [],
+    "yuanbao": [],
+    "google_chat": [],
+    "irc": [],
+    "line": [],
+    "ntfy": [],
+    "simplex": [],
+    "teams": []
+  }
+}

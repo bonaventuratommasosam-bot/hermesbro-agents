@@ -1,0 +1,1 @@
+{"kind":"hermes-gateway","gateway_state":"stopped","exit_reason":null,"active_agents":0,"platforms":{"telegram":{"state":"disconnected","error_code":null,"error_message":null},"whatsapp":{"state":"fatal","error_code":"whatsapp_bridge_missing","error_message":"WhatsApp bridge script missing."}}}

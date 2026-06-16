@@ -1,0 +1,32 @@
+{
+  "artifact_id": "20260616T010006Z-dd242e8b",
+  "created_at": "2026-06-16T01:00:06Z",
+  "provider": "offline-marker",
+  "status": "invalid",
+  "workspace_root": "$HERMES_PROFILES_DIR/sentinel",
+  "source_roots": [
+    "$HERMES_PROFILES_DIR/sentinel/.dreaming/sources/initial-soul.md"
+  ],
+  "report": "# Hermes Dreaming Report\n\n- Provider: `offline-marker`\n- Sources scanned: `1`\n- Proposals staged: `0`\n\n## Notes\n\n- No DREAM markers were found in the supplied sources.\n\n## Proposals\n\n- None\n\n## Validation\n\n- artifact contains no proposals\n",
+  "sources": [
+    {
+      "path": "$HERMES_PROFILES_DIR/sentinel/.dreaming/sources/initial-soul.md",
+      "kind": "source",
+      "content": "# Nightly Source per sentinel\n",
+      "sha256": "7bef437f266fae1a7ef4cec3d7d7a6e3f07d18632fe2acdb3e02287ded072856",
+      "line_count": 2
+    }
+  ],
+  "proposals": [],
+  "validation_errors": [
+    "artifact contains no proposals"
+  ],
+  "apply_errors": [],
+  "applied_proposal_ids": [],
+  "backup_paths": [],
+  "audit_events": [],
+  "apply_started_at": null,
+  "apply_finished_at": null,
+  "applied_at": null,
+  "discarded_at": null
+}

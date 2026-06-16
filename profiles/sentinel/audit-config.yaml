@@ -1,0 +1,21 @@
+client:
+  name: "NOME_CLIENTE_PLACEHOLDER"
+  default_domain: "DOMINIO_PLACEHOLDER"
+  timezone: Europe/Rome
+audit:
+  smart_contract_sla_hours: 48
+  vps_audit_sla_hours: 24
+  min_score_alert: 60
+telegram:
+  group_chat_id: "CHAT_ID_GRUPPO_PLACEHOLDER"
+  admin_chat_id: "CHAT_ID_ADMIN_PLACEHOLDER"
+roles:
+  admin:
+  - CHAT_ID_ADMIN_PLACEHOLDER
+queue:
+  pending: []
+cron:
+  queue_process: '*/15 * * * *'
+  enabled: false
+language:
+  default: it

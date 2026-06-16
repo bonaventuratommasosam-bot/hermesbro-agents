@@ -1,0 +1,39 @@
+# DesignBro Studio — cliente demo (placeholder)
+# Sostituisci i valori con quelli del tuo brand
+brand:
+  name: ""
+  industry: ""
+  tagline: ""
+  keywords: ""
+  timezone: "Europe/Rome"
+
+visual:
+  primary_color: ""
+  mood: "professional"
+  style: "modern"
+
+telegram:
+  group_chat_id: ""
+  admin_chat_id: ""
+  allow_all_users: true
+  require_approval: true
+
+roles:
+  admin: []
+  reviewers: []
+
+output:
+  formats:
+  - logo
+  - palette
+  - typography
+  - social
+  - menu
+  archive_dir: cache/designs
+
+cron:
+  brand_checkin: 0 9 1 * *
+  enabled: false
+
+language:
+  default: it

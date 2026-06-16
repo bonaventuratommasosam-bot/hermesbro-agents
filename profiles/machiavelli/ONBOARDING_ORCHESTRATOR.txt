@@ -1,0 +1,5 @@
+Machiavelli Orchestrator attivo.
+
+1. Start → setup (5 domande)
+2. Prova: fleet
+3. Poi: dispatch frank <task> | piano <obiettivo> | debate <tema>

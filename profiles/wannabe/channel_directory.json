@@ -1,0 +1,79 @@
+{
+  "updated_at": "2026-06-16T09:52:26.441050",
+  "platforms": {
+    "telegram": [
+      {
+        "id": "{{TELEGRAM_CHAT_ID}}:31692",
+        "name": "Admin / topic 31692",
+        "type": "dm",
+        "thread_id": "31692"
+      },
+      {
+        "id": "{{TELEGRAM_CHAT_ID}}:31945",
+        "name": "Admin / topic 31945",
+        "type": "dm",
+        "thread_id": "31945"
+      },
+      {
+        "id": "{{TELEGRAM_CHAT_ID}}",
+        "name": "Group",
+        "type": "group",
+        "thread_id": null
+      },
+      {
+        "id": "{{TELEGRAM_CHAT_ID}}:31362",
+        "name": "Admin / topic 31362",
+        "type": "dm",
+        "thread_id": "31362"
+      },
+      {
+        "id": "{{TELEGRAM_CHAT_ID}}:33605",
+        "name": "Admin / topic 33605",
+        "type": "dm",
+        "thread_id": "33605"
+      },
+      {
+        "id": "{{TELEGRAM_CHAT_ID}}:34331",
+        "name": "Admin / topic 34331",
+        "type": "dm",
+        "thread_id": "34331"
+      },
+      {
+        "id": "{{TELEGRAM_CHAT_ID}}:34829",
+        "name": "Admin / topic 34829",
+        "type": "dm",
+        "thread_id": "34829"
+      },
+      {
+        "id": "{{TELEGRAM_CHAT_ID}}:34833",
+        "name": "Admin / topic 34833",
+        "type": "dm",
+        "thread_id": "34833"
+      }
+    ],
+    "discord": [],
+    "whatsapp": [],
+    "slack": [],
+    "signal": [],
+    "mattermost": [],
+    "matrix": [],
+    "homeassistant": [],
+    "email": [],
+    "sms": [],
+    "dingtalk": [],
+    "msgraph_webhook": [],
+    "feishu": [],
+    "wecom": [],
+    "wecom_callback": [],
+    "weixin": [],
+    "bluebubbles": [],
+    "qqbot": [],
+    "yuanbao": [],
+    "google_chat": [],
+    "irc": [],
+    "line": [],
+    "ntfy": [],
+    "simplex": [],
+    "teams": []
+  }
+}

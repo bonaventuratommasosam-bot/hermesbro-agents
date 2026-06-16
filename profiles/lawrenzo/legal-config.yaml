@@ -1,0 +1,31 @@
+client:
+  name: [Ragione Sociale Cliente]
+  sector: saas
+  business_type: ''
+  timezone: Europe/Rome
+jurisdiction:
+  country: IT
+  foro: Milano
+  language: it
+telegram:
+  group_chat_id: '{{TELEGRAM_CHAT_ID}}'
+  admin_chat_id: '{{TELEGRAM_CHAT_ID}}'
+  alert_deadline_days: 5
+roles:
+  admin:
+  - {{TELEGRAM_CHAT_ID}}
+documents:
+  enabled:
+  - nda
+  - fornitura
+  - consulenza
+  - partnership
+  - privacy
+  - terms
+  require_lawyer_review: true
+cron:
+  deadline_scan: 0 8 * * 1
+  enabled: false
+disclaimer:
+  text: Bozza generata da AI — revisione di un legale abilitato obbligatoria prima
+    della firma.

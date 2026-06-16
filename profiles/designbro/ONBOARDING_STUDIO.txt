@@ -1,0 +1,17 @@
+Benvenuto in DesignBro Studio!
+
+Configurazione guidata in 2 minuti:
+
+1. Apri il bot su Telegram → Start
+2. Scrivi: setup
+3. Rispondi alle 5 domande (brand, settore, colore, gruppo, tuo ID)
+4. Prova: logo concept
+
+Comandi dopo setup:
+- palette colori
+- tipografia
+- brand kit
+- dimensioni social
+- config mostra
+
+Ogni output include HEX, font e specifiche tecniche — pronto per review.

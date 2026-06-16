@@ -1,0 +1,110 @@
+{
+  "jobs": [
+    {
+      "id": "groot-brigata-am",
+      "name": "GROOT Brigata — Riepilogo mattina",
+      "prompt": "Sei GROOT Brigata. Report mattutino per la squadra.\n\n1. Esegui: python3 {{HERMES_HOME}}/skills/groot-tools/scripts/lista_spesa.py list --stato da_comprare --limit 20\n2. Esegui: python3 {{HERMES_HOME}}/skills/groot-tools/scripts/lista_spesa.py list --priorita urgente --stato da_comprare\n3. Compila messaggio breve: voci aperte + urgenti (max 12 righe). Se lista vuota: un messaggio corto positivo.\n\nTono: da brigata, diretto, emoji funzionali (✅ 📋 ⚠️).",
+      "skills": [
+        "groot-tools"
+      ],
+      "skill": "groot-tools",
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 7 * * 1-6",
+        "display": "weekdays at 07:30",
+        "timezone": "Europe/Rome"
+      },
+      "schedule_display": "weekdays at 07:30",
+      "enabled": true,
+      "state": "configurable",
+      "deliver": "telegram:{{TELEGRAM_GROUP_CHAT_ID}}",
+      "enabled_toolsets": [
+        "terminal"
+      ],
+      "next_run_at": null,
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "last_delivery_error": null
+    },
+    {
+      "id": "groot-brigata-post",
+      "name": "GROOT Brigata — Post servizio",
+      "prompt": "Sei GROOT Brigata. Riepilogo fine giornata.\n\n1. Leggi voci LISTA_SPESA aggiunte oggi (stato da_comprare o ordinato).\n2. Messaggio: cosa segnalato oggi + invito «manca qualcosa?».\n3. Max 8 righe. Se nulla: messaggio corto.\n\nTono: collega in cucina, non corporatese.",
+      "skills": [
+        "groot-tools"
+      ],
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 23 * * *",
+        "display": "daily at 23:30",
+        "timezone": "Europe/Rome"
+      },
+      "schedule_display": "daily at 23:30",
+      "enabled": true,
+      "state": "configurable",
+      "deliver": "telegram:{{TELEGRAM_GROUP_CHAT_ID}}",
+      "enabled_toolsets": [
+        "terminal"
+      ],
+      "next_run_at": null,
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "last_delivery_error": null
+    },
+    {
+      "id": "groot-brigata-week",
+      "name": "GROOT Brigata — Report settimanale",
+      "prompt": "Sei GROOT Brigata. Mini-report lunedì per chef/admin.\n\n1. Top 5 item più richiesti settimana da LISTA_SPESA.\n2. Voci aperte > 3 giorni.\n3. 1 azione concreta (ordine fornitore, prep, controllo scorte).\n\nMax 10 righe.",
+      "skills": [
+        "groot-tools"
+      ],
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 8 * * 1",
+        "display": "Monday at 08:00",
+        "timezone": "Europe/Rome"
+      },
+      "schedule_display": "Monday at 08:00",
+      "enabled": true,
+      "state": "configurable",
+      "deliver": "telegram:{{TELEGRAM_GROUP_CHAT_ID}}",
+      "enabled_toolsets": [
+        "terminal"
+      ],
+      "next_run_at": null,
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "last_delivery_error": null
+    },
+    {
+      "id": "groot-brigata-sheets-ping",
+      "name": "GROOT Brigata — Sheets health",
+      "prompt": "Esegui python3 {{HERMES_HOME}}/skills/groot-tools/scripts/lista_spesa.py ping. Se ok=false, avvisa solo admin con errore breve. Se ok, non inviare nulla.",
+      "skills": [
+        "groot-tools"
+      ],
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 */6 * * *",
+        "display": "every 6 hours",
+        "timezone": "Europe/Rome"
+      },
+      "schedule_display": "every 6 hours",
+      "enabled": true,
+      "state": "configurable",
+      "deliver": "telegram:{{TELEGRAM_ADMIN_CHAT_ID}}",
+      "enabled_toolsets": [
+        "terminal"
+      ],
+      "next_run_at": null,
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "last_delivery_error": null
+    }
+  ],
+  "updated_at": "{{UPDATED_AT}}"
+}

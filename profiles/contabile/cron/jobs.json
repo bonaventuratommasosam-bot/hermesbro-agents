@@ -1,0 +1,6 @@
+{
+  "jobs": [
+    {"id": "deadline_check", "schedule": "0 8 * * 1-5", "message": "📊 Scadenze fiscali. Scrivi scadenze.", "target": "telegram:", "enabled": false},
+    {"id": "weekly_report", "schedule": "0 9 * * 1", "message": "📈 Report settimanale. Scrivi riepilogo.", "target": "telegram:", "enabled": false}
+  ]
+}

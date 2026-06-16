@@ -1,0 +1,16 @@
+{
+  "pid": 0,
+  "kind": "hermes-gateway",
+  "argv": ["/usr/local/bin/hermes", "gateway", "run"],
+  "gateway_state": "stopped",
+  "exit_reason": null,
+  "restart_requested": false,
+  "active_agents": 0,
+  "platforms": {
+    "telegram": {
+      "state": "disconnected",
+      "error_code": null,
+      "error_message": null
+    }
+  }
+}
