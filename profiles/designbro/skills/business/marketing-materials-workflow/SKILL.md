@@ -608,7 +608,7 @@ python3 linkedin.py post-file-poll post.txt "Q?" "A" "B"       # Poll from file
 **Pitfall**: Image generation (FAL) may be unavailable. Always create HTML fallbacks for banner/logo so [REDACTED — dati personali rimossi] can screenshot them. Do NOT block on image_generate.
 **Pitfall**: `pip install Pillow` fails with PEP 688 on newer Debian/Ubuntu. Use `pip install Pillow --break-system-packages`.
 
-**Pitfall**: `urn:li:person:~` and `urn:li:member:~` do NOT work as author values in the Posts API. You must use the actual person URN (e.g., `urn:li:person:***REMOVED***`). Get it from the `sub` claim after OIDC auth.
+**Pitfall**: `urn:li:person:~` and `urn:li:member:~` do NOT work as author values in the Posts API. You must use the actual person URN (e.g., `urn:li:person:XXXXXXXXXX`). Get it from the `sub` claim after OIDC auth.
 
 ## LinkedIn Launch Post Scheduling
 

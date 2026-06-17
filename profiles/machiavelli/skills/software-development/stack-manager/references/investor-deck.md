@@ -21,7 +21,7 @@ Self-contained HTML. Space Mono font. Open directly in browser.
 5. **04 Mercato** — split layout: big numbers left, "perché adesso" right
 6. **05 Pricing** — 3-card grid (€29/€79/€199) with center elevated + unit economics bar
 7. **06 Avanzamento** — 2-column traction + 4-column horizontal roadmap
-8. **07 Team** — 3 cards (Tommaso/Hermes/Frank) with role badges
+8. **07 Team** — 3 cards (Founder/Hermes/Frank) with role badges
 9. **08 Investimento** — €25K CTA box with breakdown + milestones grid
 10. **Footer** — contact links (email, Telegram, X)
 
