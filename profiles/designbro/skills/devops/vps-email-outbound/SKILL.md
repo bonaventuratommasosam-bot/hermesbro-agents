@@ -139,7 +139,7 @@ The `-r sender@DOMAIN` address MUST use the domain that has SPF+DKIM configured.
 **Wrong:** `echo "test" | mail -s "test" -r "user@gmail.com" dest@example.com` → `550-5.7.26 SPF did not pass`
 **Right:** `echo "test" | mail -s "test" -r "user@hermesbro.cloud" dest@example.com` → `status=sent`
 
-Verified 2026-06-06: Postfix + OpenDKIM on ***REMOVED*** sends to Gmail successfully when FROM uses `@hermesbro.cloud`.
+Verified 2026-06-06: Postfix + OpenDKIM on YOUR_VPS_ID sends to Gmail successfully when FROM uses `@hermesbro.cloud`.
 
 ### Gmail blocks without SPF+DKIM
 Gmail rejects unauthenticated email with `550-5.7.26`. MUST have both SPF TXT record AND DKIM signing. SPF alone is not enough.
@@ -151,7 +151,7 @@ If email body or recipient contains non-ASCII characters (accents, etc.) and the
 All major email services block automated account creation with Cloudflare Turnstile or reCAPTCHA. User must create accounts manually. Don't waste time trying to automate — direct the user to do it.
 
 ### VPS IP reputation
-Contabo/cheap VPS IPs can have mixed reputation. However, with proper SPF+DKIM+DMARC setup, deliverability to Gmail and major providers works well (verified on ***REMOVED*** with Aruba IP). Monitor bounces. If deliverability drops below 90%, consider a relay service (SendGrid/Mailgun SMTP relay).
+Contabo/cheap VPS IPs can have mixed reputation. However, with proper SPF+DKIM+DMARC setup, deliverability to Gmail and major providers works well (verified on YOUR_VPS_ID with Aruba IP). Monitor bounces. If deliverability drops below 90%, consider a relay service (SendGrid/Mailgun SMTP relay).
 
 ### Rate limiting for cold email
 Send max 20-50 emails per day from a new IP. Warm up over 2-4 weeks. Space emails 30+ seconds apart. Too fast = spam flag.

@@ -16,7 +16,7 @@ sudo chmod 700 /home/hermes-pc/.ssh
 
 ```powershell
 # Windows (PowerShell)
-ssh-keygen -t ed25519 -f "$env:USERPROFILE\.ssh\hermes-pc" -N "" -C "hermes-pc@***REMOVED***"
+ssh-keygen -t ed25519 -f "$env:USERPROFILE\.ssh\hermes-pc" -N "" -C "hermes-pc@YOUR_VPS_ID"
 
 # Read public key
 Get-Content "$env:USERPROFILE\.ssh\hermes-pc.pub"
@@ -24,7 +24,7 @@ Get-Content "$env:USERPROFILE\.ssh\hermes-pc.pub"
 
 ```bash
 # Linux/Mac
-ssh-keygen -t ed25519 -f ~/.ssh/hermes-pc -N "" -C "hermes-pc@***REMOVED***"
+ssh-keygen -t ed25519 -f ~/.ssh/hermes-pc -N "" -C "hermes-pc@YOUR_VPS_ID"
 cat ~/.ssh/hermes-pc.pub
 ```
 
@@ -35,7 +35,7 @@ cat ~/.ssh/hermes-pc.pub
 ```bash
 # User pastes their public key, agent runs:
 sudo tee /home/hermes-pc/.ssh/authorized_keys << 'EOF'
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5... hermes-pc@***REMOVED***
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5... hermes-pc@YOUR_VPS_ID
 EOF
 sudo chmod 600 /home/hermes-pc/.ssh/authorized_keys
 sudo chown -R hermes-pc:hermes-pc /home/hermes-pc/.ssh

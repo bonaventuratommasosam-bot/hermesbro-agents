@@ -12,7 +12,7 @@ Fields:
 - **Company type:** Privately Held
 - **Founded:** 2025
 - **Headquarters:** Torino, Piedmont, Italy
-- **Website:** https://***REMOVED***/hermesbro/
+- **Website:** https://YOUR_VPS_HOST/hermesbro/
 - **Email:** info@hermesbro.com
 
 ### About Section (use this copy)
@@ -27,7 +27,7 @@ HermesBro è la piattaforma di 5 bot AI specializzati, ognuno progettato per ris
 
 Niente buzzword. Niente promesse vuote. Bot che funzionano, per imprenditori che agiscono.
 
-🔗 ***REMOVED***/hermesbro/
+🔗 YOUR_VPS_HOST/hermesbro/
 📧 info@hermesbro.com
 
 ### Specialties (copy-paste)
@@ -70,7 +70,7 @@ Launch posts: `<HERMES_ROOT>/shared/marketing/linkedin/post-{1..5}.txt`
 
 ### CTA Button
 
-- Primary: "Visita il sito web" → ***REMOVED***/hermesbro/
+- Primary: "Visita il sito web" → YOUR_VPS_HOST/hermesbro/
 - Secondary: "Contattaci" (not "Prova gratis" — no self-serve yet)
 
 ## Developer App Creation
@@ -81,7 +81,7 @@ Steps:
 1. Click "Create App"
 2. **App name:** HermesBro
 3. **LinkedIn Page:** Select the HermesBro company page (MUST exist first)
-4. **Privacy policy URL:** `https://***REMOVED***/hermesbro/privacy-policy.html`
+4. **Privacy policy URL:** `https://YOUR_VPS_HOST/hermesbro/privacy-policy.html`
 5. **App logo:** Upload logo.png
 6. Accept terms → Create app
 7. Go to Auth tab → Add redirect URL: `http://localhost:8089/callback`

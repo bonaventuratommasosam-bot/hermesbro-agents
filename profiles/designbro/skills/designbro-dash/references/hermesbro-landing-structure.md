@@ -2,7 +2,7 @@
 
 ## Live Site Sections (Contabo)
 
-The live site at `https://***REMOVED***/hermesbro/` uses these section IDs:
+The live site at `https://YOUR_VPS_HOST/hermesbro/` uses these section IDs:
 
 - `#bot` — Product cards (7 bots: Ratatouille, ContAIbile, LAWrenzo, Wannabe, DesignBro, DUCATO, El Froggo)
 - `#prezzi` — Pricing grid (3 cards: Starter €50, Pro €120, Enterprise Custom)

@@ -603,7 +603,7 @@ python3 linkedin.py post-file-poll post.txt "Q?" "A" "B"       # Poll from file
 **Pitfall**: OAuth redirect goes to `http://localhost:8089/callback` which won't load ([REDACTED — dati personali rimossi] isn't on the server). The page will show an error — that's expected. [REDACTED — dati personali rimossi] must copy the `code=` parameter from the URL bar and send it back. Example: if URL is `http://localhost:8089/callback?code=AQT5...&state=hermesbots2026`, send only `AQT5...`.
 **Pitfall**: LinkedIn Developer App requires a Company Page URL at creation time. Create the page FIRST (https://www.linkedin.com/company/setup/new/), then create the app.
 **Pitfall**: The LinkedIn app creation form asks for a "LinkedIn Page" — this must be a Company Page, not a personal profile. If [REDACTED — dati personali rimossi] hasn't created the company page yet, he needs to do that first.
-**Pitfall**: The form asks for "Privacy policy URL" — use `https://***REMOVED***/hermesbro/privacy-policy.html`.
+**Pitfall**: The form asks for "Privacy policy URL" — use `https://YOUR_VPS_HOST/hermesbro/privacy-policy.html`.
 **Pitfall**: After creating the app, add redirect URL `http://localhost:8089/callback` in the Auth tab before running `linkedin.py auth`.
 **Pitfall**: Image generation (FAL) may be unavailable. Always create HTML fallbacks for banner/logo so [REDACTED — dati personali rimossi] can screenshot them. Do NOT block on image_generate.
 **Pitfall**: `pip install Pillow` fails with PEP 688 on newer Debian/Ubuntu. Use `pip install Pillow --break-system-packages`.
@@ -1071,7 +1071,7 @@ When adding a new cross-sell asset (e.g. foodcostitalia.it, a micro-site, a new 
 **Current cross-sell assets:**
 - `foodcostitalia.it` — micro-sito affiliato per ristoratori (guide [REDACTED — dati personali rimossi], gestionali, stampanti termiche). Link in 6/14 posts (43%). Added June 2026.
 
-**Pitfall:** When updating URLs in post files, ALL four artifacts must use the same URL. The old VPS URL (`***REMOVED***/hermesbro/`) was still in some files while others had `hermesbro.cloud`. Grep all artifacts after updating.
+**Pitfall:** When updating URLs in post files, ALL four artifacts must use the same URL. The old VPS URL (`YOUR_VPS_HOST/hermesbro/`) was still in some files while others had `hermesbro.cloud`. Grep all artifacts after updating.
 
 **Pitfall:** Cron job prompts are the source of truth for the automated flow. If a cross-sell section is missing from the cron prompt, the automated posts won't include it — even if the calendar says they should.
 

@@ -267,7 +267,7 @@ When generating bot profile images (for website, social, branding), use a **mult
 
 The HermesBro landing page lives at:
 - **Local:** `/root/hermesbro-landing.html`
-- **Live:** `https://***REMOVED***/hermesbro/` (Contabo server, no SSH access from Hermes)
+- **Live:** `https://YOUR_VPS_HOST/hermesbro/` (Contabo server, no SSH access from Hermes)
 
 **Deployment workflow:**
 1. Modify `/root/hermesbro-landing.html` locally
@@ -328,7 +328,7 @@ Then copy to `bot-profiles/` with correct bot names and update HTML `<img src=".
 
 ## Website Deployment (HermesBro Landing)
 
-The landing page lives on Contabo (`***REMOVED***/hermesbro/`). Local copy: `/root/hermesbro-landing.html`. No SSH access — modify locally, send HTML + assets to user for upload.
+The landing page lives on Contabo (`YOUR_VPS_HOST/hermesbro/`). Local copy: `/root/hermesbro-landing.html`. No SSH access — modify locally, send HTML + assets to user for upload.
 
 Directory structure on server:
 ```

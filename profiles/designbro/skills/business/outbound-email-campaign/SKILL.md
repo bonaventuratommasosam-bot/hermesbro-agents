@@ -69,7 +69,7 @@ See `references/email-templates.md` for 5 Italian sector templates (ristoranti, 
 
 **Recommended**: Brevo (300/day free, no card, good for Italian market).
 
-**Alternative**: VPS Postfix + OpenDKIM as local SMTP. Works well for non-Gmail recipients. With proper DKIM signing + SPF DNS record, deliverability is acceptable for first batches. See `references/postfix-dkim-setup.md` for the exact configuration steps tested on ***REMOVED***.
+**Alternative**: VPS Postfix + OpenDKIM as local SMTP. Works well for non-Gmail recipients. With proper DKIM signing + SPF DNS record, deliverability is acceptable for first batches. See `references/postfix-dkim-setup.md` for the exact configuration steps tested on YOUR_VPS_ID.
 
 ### 5. Sending best practices
 - **Volume ramp**: Start with 20/day, increase by 10/day each week
@@ -149,7 +149,7 @@ Postfix + OpenDKIM on VPS works for Gmail and all major providers **when properl
 - SPF DNS TXT record pointing to VPS IP
 - DKIM signing via OpenDKIM (verify with `opendkim-testkey -d DOMAIN -s mail -vv`)
 - FROM address MUST use the domain with SPF/DKIM (e.g. `name@hermesbro.cloud`), NEVER a Gmail/external address — Gmail always rejects unauthenticated senders via Postfix relay
-- Verified working 2026-06-06 on ***REMOVED***: `status=sent` to Gmail with DKIM signature
+- Verified working 2026-06-06 on YOUR_VPS_ID: `status=sent` to Gmail with DKIM signature
 
 Check logs: `grep "DKIM-Signature field added" /var/log/mail.log`
 

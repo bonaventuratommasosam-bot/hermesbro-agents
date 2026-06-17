@@ -199,7 +199,7 @@ Every bot needs:
 2. **Nginx reverse proxy** — add to `/etc/nginx/sites-enabled/stack`:
    - Webhook route: `location /{bot-path}/webhook/` → proxy to bot port
    - Dashboard: `location /{bot-path}/` → proxy to bot port
-3. **WEBHOOK_HOST** in .env: `https://***REMOVED***/{bot-path}`
+3. **WEBHOOK_HOST** in .env: `https://YOUR_VPS_HOST/{bot-path}`
 
 Example nginx block:
 ```nginx

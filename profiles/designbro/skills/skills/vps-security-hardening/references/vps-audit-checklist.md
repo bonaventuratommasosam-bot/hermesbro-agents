@@ -34,7 +34,7 @@ nginx -T 2>/dev/null | grep -E "(X-Frame-Options|X-Content-Type|X-XSS-Protection
 
 ## 6. SSL Certificates
 ```bash
-for domain in hermesbro.cloud ***REMOVED*** opengateway.***REMOVED***; do
+for domain in example.com app.example.com api.example.com; do
   echo | openssl s_client -servername $domain -connect $domain:443 2>/dev/null | openssl x509 -noout -enddate
 done
 ```

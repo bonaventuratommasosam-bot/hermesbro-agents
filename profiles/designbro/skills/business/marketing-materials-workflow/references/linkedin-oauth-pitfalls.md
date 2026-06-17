@@ -78,7 +78,7 @@ python3 linkedin-oauth.py me            # Get profile + save URN
 LinkedIn app creation form requires:
 - **App name**: Hermes Bots
 - **LinkedIn Page**: Must be a Company Page (not personal profile). Create at https://www.linkedin.com/company/setup/new/ FIRST
-- **Privacy policy URL**: `https://***REMOVED***/hermesbro/privacy-policy.html`
+- **Privacy policy URL**: `https://YOUR_VPS_HOST/hermesbro/privacy-policy.html`
 - **App logo**: Square image, at least 100px
 
 After creation:

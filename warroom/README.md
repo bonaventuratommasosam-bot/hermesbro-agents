@@ -62,7 +62,7 @@ Copia `.env.example` in `.env` e imposta:
 
 - `OPENGATEWAY_URL` — endpoint LLM compatibile OpenAI API
 - `OPENGATEWAY_KEY` — API key
-- `MODEL` — modello (default: `mimo-v2.5-pro`)
+- `MODEL` — modello (default: `gpt-4o`)
 
 ## API
 

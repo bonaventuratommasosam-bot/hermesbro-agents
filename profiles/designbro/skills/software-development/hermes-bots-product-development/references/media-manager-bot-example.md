@@ -23,7 +23,7 @@ Concrete example of bot product development pattern.
 ## Deployment
 
 - Port: 8093, Service: wannabe.service
-- Webhook: https://***REMOVED***/wannabe/webhook/{token}
+- Webhook: https://YOUR_VPS_HOST/wannabe/webhook/{token}
 
 ## Key Lessons
 

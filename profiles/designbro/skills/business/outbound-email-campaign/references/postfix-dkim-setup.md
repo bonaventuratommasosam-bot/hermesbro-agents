@@ -1,6 +1,6 @@
 # Postfix + OpenDKIM Setup for VPS Email Sending
 
-Tested on ***REMOVED*** (Contabo, Ubuntu 24.04). Domain: hermesbro.cloud.
+Tested on YOUR_VPS_ID (Contabo, Ubuntu 24.04). Domain: hermesbro.cloud.
 
 ## 1. Configure Postfix
 

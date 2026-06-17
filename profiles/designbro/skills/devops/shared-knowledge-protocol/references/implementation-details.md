@@ -37,7 +37,7 @@ Knowledge files (facts.md, decisions.md, preferences.md, conversations.md)
 - [2026-05-31] [gribbito] [REDACTED — dati personali rimossi]'s Telegram: <USER>, chat_id <ADMIN_CHAT_ID>
 
 ## Environment
-- [2026-05-31] [gribbito] VPS: ***REMOVED***, 11 GiB RAM, 6 cores
+- [2026-05-31] [gribbito] VPS: YOUR_VPS_ID, 11 GiB RAM, 6 cores
 ```
 
 ### decisions.md

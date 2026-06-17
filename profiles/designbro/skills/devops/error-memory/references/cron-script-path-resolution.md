@@ -8,7 +8,7 @@ When cron `no_agent` jobs fail with path-related errors, the root cause is usual
 
 **Root Cause:** Hermes cron uses `os.path.realpath()` to resolve symlinks. If a symlink in `~/.hermes/profiles/<profile>/scripts/` points to `<HERMES_ROOT>/shared/scripts/`, the resolved path is outside the allowed directory → blocked.
 
-**Verified on:** ***REMOVED***, 2026-06-06. Affected: knowledge-sync, skill-sync, session-digest, conversation-summary.
+**Verified on:** YOUR_VPS_ID, 2026-06-06. Affected: knowledge-sync, skill-sync, session-digest, conversation-summary.
 
 **Fix:** Replace symlinks with real copies:
 ```bash
