@@ -129,8 +129,8 @@ If [REDACTED — dati personali rimossi] authorizes the OAuth URL multiple times
 
 ## [REDACTED — dati personali rimossi]'s LinkedIn Profile
 
-- **Name**: Tommaso Bonaventura
-- **Person URN**: `urn:li:person:***REMOVED***`
-- **Email**: ***REMOVED***
-- **LinkedIn Client ID**: 77dc64gt49imai
+|- **Name**: [Nome Cliente]
+|- **Person URN**: `[LinkedIn URN]`
+|- **Email**: [email cliente]
+|- **LinkedIn Client ID**: [client ID]
 - **Config file**: `<HERMES_ROOT>/shared/linkedin/config.env`

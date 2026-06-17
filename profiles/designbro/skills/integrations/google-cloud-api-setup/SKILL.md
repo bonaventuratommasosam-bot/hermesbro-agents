@@ -17,7 +17,7 @@ related_skills: [hermesbro-site, [REDACTED — dati personali rimossi]-stack-man
 ## Project context
 - **GCP Project**: ratatouille-app (ID: `ratatouille-app-497213`, number: `528018243613`)
 - **Credits**: 257€, valid until August 24, 2026
-- **Key owner**: Tommaso Bonaventura (French GCP console locale)
+|- **Key owner**: [Nome Cliente] (French GCP console locale)
 - **gcloud CLI**: installed at `/usr/bin/gcloud` (SDK 570.0.0)
 
 ## Gemini API setup (Google AI Studio key)

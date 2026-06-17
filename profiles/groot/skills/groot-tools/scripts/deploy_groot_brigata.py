@@ -8,11 +8,11 @@ from datetime import datetime
 from pathlib import Path
 
 LOCAL = Path("/tmp/groot-brigata")
-PROFILE = Path("{{HERMES_HOME}}")
+PROFILE = Path("{YOUR_HERMES_HOME}")
 SKILL = PROFILE / "skills/groot-tools"
 SCRIPTS = SKILL / "scripts"
-WEB = Path("/var/www/hermesbro/os/agents")
-SRC = Path("{{HERMES_HOME}}/../../hermesbro-os-app/src/agents")
+WEB = Path("{YOUR_WEB_ROOT}/os/agents")
+SRC = Path("{YOUR_HERMES_HOME}/../../hermesbro-os-app/src/agents")
 SYSTEMD = Path("/etc/systemd/system/hermes-squad-groot.service")
 
 
