@@ -15,7 +15,7 @@ The live site at `https://YOUR_VPS_HOST/hermesbro/` uses these section IDs:
 
 ## Local File
 
-`/root/hermesbro-landing.html` — may be outdated vs live. Always check live site structure before modifying.
+`{{HERMES_HOME}}/hermesbro-landing.html` — may be outdated vs live. Always check live site structure before modifying.
 
 ## Product Card Structure (live site)
 
@@ -56,7 +56,7 @@ Update CSS to support images:
 ## Deployment
 
 No SSH access to Contabo. Workflow:
-1. Modify `/root/hermesbro-landing.html` locally
+1. Modify `{{HERMES_HOME}}/hermesbro-landing.html` locally
 2. Send HTML + assets to user via Telegram
 3. User uploads to server manually
 

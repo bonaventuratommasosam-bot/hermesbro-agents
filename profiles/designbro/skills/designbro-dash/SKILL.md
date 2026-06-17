@@ -61,10 +61,10 @@ img.convert('RGB').save('output.jpg', 'JPEG', quality=95)
 
 ## Brand Files Location
 
-- Brand system HTML: `/root/hermesbro-brand.html`
+- Brand system HTML: `{{HERMES_HOME}}/hermesbro-brand.html`
 - Marketing assets: `<HERMES_ROOT>/shared/marketing/`
 - LinkedIn assets: `<HERMES_ROOT>/shared/marketing/linkedin/`
-- Logo SVGs: `/root/hermesbro-logo-gold.svg`, `-white.svg`, `-light.svg`
+- Logo SVGs: `{{HERMES_HOME}}/hermesbro-logo-gold.svg`, `-white.svg`, `-light.svg`
 - Content calendars: `<HERMES_ROOT>/shared/marketing/brand/content-calendar*.md`
 - Social templates: `<HERMES_ROOT>/shared/marketing/brand/social-templates.md`
 - Brand identity guide: `<HERMES_ROOT>/shared/marketing/brand/brand-identity.md`
@@ -266,11 +266,11 @@ When generating bot profile images (for website, social, branding), use a **mult
 ## Landing Page Updates
 
 The HermesBro landing page lives at:
-- **Local:** `/root/hermesbro-landing.html`
+- **Local:** `{{HERMES_HOME}}/hermesbro-landing.html`
 - **Live:** `https://YOUR_VPS_HOST/hermesbro/` (Contabo server, no SSH access from Hermes)
 
 **Deployment workflow:**
-1. Modify `/root/hermesbro-landing.html` locally
+1. Modify `{{HERMES_HOME}}/hermesbro-landing.html` locally
 2. Tell user to upload to Contabo server (they have access, we don't)
 3. If images are needed on the site, they must also be uploaded to the server
 
@@ -328,7 +328,7 @@ Then copy to `bot-profiles/` with correct bot names and update HTML `<img src=".
 
 ## Website Deployment (HermesBro Landing)
 
-The landing page lives on Contabo (`YOUR_VPS_HOST/hermesbro/`). Local copy: `/root/hermesbro-landing.html`. No SSH access — modify locally, send HTML + assets to user for upload.
+The landing page lives on Contabo (`YOUR_VPS_HOST/hermesbro/`). Local copy: `{{HERMES_HOME}}/hermesbro-landing.html`. No SSH access — modify locally, send HTML + assets to user for upload.
 
 Directory structure on server:
 ```

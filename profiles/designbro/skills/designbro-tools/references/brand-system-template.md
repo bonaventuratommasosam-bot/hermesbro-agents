@@ -109,4 +109,4 @@ Speed: M28 72 L14 68  /  M132 72 L146 68  (20% opacity)
 ```
 
 ## Reference implementation
-`/root/hermesbro-brand.html` — full working example with all sections, animations, and responsive breakpoints.
+`{{HERMES_HOME}}/hermesbro-brand.html` — full working example with all sections, animations, and responsive breakpoints.

@@ -30,7 +30,7 @@
 ## Logo SVG
 - Ali stilizzate di Hermes + caduceo
 - 3 varianti: gold (dark bg), white (dark bg), dark-gold (light bg)
-- Files: `/root/hermesbro-logo-gold.svg`, `-white.svg`, `-light.svg`
+- Files: `{{HERMES_HOME}}/hermesbro-logo-gold.svg`, `-white.svg`, `-light.svg`
 - Animazione: draw-in su stroke (dasharray/dashoffset)
 
 ## Prodotti
@@ -53,6 +53,6 @@
 - ✗ Mai "siamo lieti di" / "la ringraziamo"
 
 ## File Locations
-- Brand system HTML: `/root/hermesbro-brand.html`
+- Brand system HTML: `{{HERMES_HOME}}/hermesbro-brand.html`
 - Marketing: `<HERMES_ROOT>/shared/marketing/`
 - LinkedIn: `<HERMES_ROOT>/shared/marketing/linkedin/`

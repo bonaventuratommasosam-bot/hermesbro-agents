@@ -1,9 +1,0 @@
-{
-  "last_report_path": "/root/.hermes/profiles/wannabe/logs/curator/20260614-235039",
-  "last_run_at": "2026-06-14T23:50:39.896737+00:00",
-  "last_run_duration_seconds": 25.548274,
-  "last_run_summary": "auto: no changes; llm: no change",
-  "last_run_summary_shown_at": null,
-  "paused": false,
-  "run_count": 1
-}
