@@ -156,7 +156,7 @@ Check logs: `grep "DKIM-Signature field added" /var/log/mail.log`
 See `references/postfix-dkim-setup.md` for config. See `references/outreach-automation.md` for the production pipeline.
 
 ### SMTPUTF8 bounce (ProtonMail, some providers)
-Email addresses MUST be lowercased before sending. Uppercase chars (e.g. `***REMOVED***`) trigger SMTPUTF8 requirement. ProtonMail does not support SMTPUTF8 → email bounces. Always `.strip().lower()` all email addresses in the sending script.
+Email addresses MUST be lowercased before sending. Uppercase chars (e.g. `contact@example.com`) trigger SMTPUTF8 requirement. ProtonMail does not support SMTPUTF8 → email bounces. Always `.strip().lower()` all email addresses in the sending script.
 
 ### Missing SPF record
 Gmail rejects emails from domains without SPF. After setting up Postfix, add DNS TXT record:

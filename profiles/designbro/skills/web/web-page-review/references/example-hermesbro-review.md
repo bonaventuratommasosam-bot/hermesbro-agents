@@ -21,7 +21,7 @@
 - Honest disclaimer: "non sostituisce un commercialista, un avvocato..."
 - Bilingual IT/EN toggle via `data-it`/`data-en` attributes
 - **Issue:** Zero social proof (no testimonials, case studies, numbers)
-- **Issue:** Email `***REMOVED***` — double O looks like typo
+- **Issue:** Email `contact@example.com` — double O looks like typo
 
 ## SEO — 6/10 (improved from 3/10)
 - ✅ `<meta description>` present

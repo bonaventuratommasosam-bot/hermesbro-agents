@@ -6,13 +6,13 @@ Cold email campaign targeting Italian businesses across 5 sectors. Templates at 
 ## Sending Infrastructure
 
 **Provider**: SendGrid (free tier: 100 emails/day)
-**Sender**: ***REMOVED***
+**Sender**: contact@example.com
 **Fallback**: Mailgun (100/day free)
 **Himalaya CLI**: `himalaya v1.2.0` installed, NOT configured (needs `~/.config/himalaya/config.toml`)
 **VPS SMTP**: Blocked by Gmail (no SPF/DKIM) — must use transactional service
 
 ### SendGrid Setup (pending — [REDACTED — dati personali rimossi] must complete manually)
-1. Create account at signup.sendgrid.com (email: ***REMOVED***, password generated 2026-06-03)
+1. Create account at signup.sendgrid.com (email: contact@example.com, password generated 2026-06-03)
 2. Verify sender email (check ProtonMail inbox for confirmation)
 3. Generate API key (Settings → API Keys)
 4. Configure: `SENDGRID_API_KEY` in env or himalaya config

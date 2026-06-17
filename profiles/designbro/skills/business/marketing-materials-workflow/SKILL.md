@@ -936,7 +936,7 @@ Before delivering to [REDACTED — dati personali rimossi]:
    - Pro €79/mese (7 agents) — most popular
    - Enterprise €199/mese (12 agents, white label, SLA)
    - NOTE: Tenant manager uses different pricing (€49/€119/€299) — those are internal/provisioning prices, NOT public-facing. Always use the landing page prices for marketing materials.
-8. Contact email: *****REMOVED***** (Proton Mail — NOT info@hermesbro.cloud)
+8. Contact email: **contact@example.com** (Proton Mail — NOT info@hermesbro.cloud)
 9. Telegram: @HermesBroBot
 10. URL: `hermesbro.cloud`
 10. **Ribbit-style posts**: Bold openings (not questions), data-driven (specific numbers), conceptual framing ("agenti" not "bot"), series format with teasing between posts
@@ -1117,7 +1117,7 @@ Cold email campaign targeting 200 Italian businesses (40/sector) across 5 sector
 
 ### Sending Infrastructure
 - **Provider**: SendGrid (free tier: 100 emails/day)
-- **Sender email**: ***REMOVED***
+- **Sender email**: contact@example.com
 - **Alternative**: Mailgun (100/day free) if SendGrid account issues
 - **⚠️ SendGrid signup**: Cloudflare CAPTCHA blocks automated signup — [REDACTED — dati personali rimossi] must register manually. Provide credentials + steps.
 - **Himalaya CLI**: Installed (`himalaya v1.2.0`) but NOT configured — needs `~/.config/himalaya/config.toml` with SMTP credentials

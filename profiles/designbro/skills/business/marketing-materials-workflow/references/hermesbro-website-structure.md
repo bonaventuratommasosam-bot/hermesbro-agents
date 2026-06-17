@@ -22,7 +22,7 @@ Uses `/bot-profiles/pixel-*.png` for smaller tech-looking images.
 
 ## Contact Info (canonical)
 
-- Email: *****REMOVED***** (Proton Mail)
+- Email: **contact@example.com** (Proton Mail)
 - Telegram: @HermesBroBot
 - URL: hermesbro.cloud
-- **Pitfall**: The original pitch deck PDF had `info@hermesbro.cloud` — this is WRONG. Always use ***REMOVED***. Grep all marketing materials for the old email before delivery.
+- **Pitfall**: The original pitch deck PDF had `info@hermesbro.cloud` — this is WRONG. Always use contact@example.com. Grep all marketing materials for the old email before delivery.

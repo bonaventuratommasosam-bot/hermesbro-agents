@@ -110,6 +110,6 @@ Where to place: Cover slide pill ("Decentralizzato • Zero Data Sharing"), Prob
 - Tagline: "Il tuo wingman AI per il business"
 - Section header: "Dieci specialisti. Un solo abbonamento."
 - CTA: "Smetti di fare tutto da solo."
-- Email: ***REMOVED***
+- Email: contact@example.com
 - URL: hermesbro.cloud
 - Telegram: @HermesBroBot
