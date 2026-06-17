@@ -46,11 +46,11 @@ def provision_tenant(tenant):
 ```
 
 ## Key Files
-- Backend: `/opt/hermesbro-multitenant/hermesbro_multitenant_backend.py` (1565 lines)
-- DB: `/opt/hermesbro-multitenant/data/hermesbro.db` (SQLite WAL mode)
-- Templates: `/opt/hermesbro-multitenant/templates/` (register.html, panel.html)
+- Backend: `{BACKEND_ROOT}/hermesbro_multitenant_backend.py` (1565 lines)
+- DB: `{BACKEND_ROOT}/data/hermesbro.db` (SQLite WAL mode)
+- Templates: `{BACKEND_ROOT}/templates/` (register.html, panel.html)
 - Tenant profiles: `<HERMES_ROOT>/profiles/tnt-*/`
-- .env: `/opt/hermesbro-multitenant/.env` (OPENAI_API_KEY, XIAOMI_BASE_URL, LLM_MODEL)
+- .env: `{BACKEND_ROOT}/.env` (OPENAI_API_KEY, XIAOMI_BASE_URL, LLM_MODEL)
 - Service: `hermesbro-multitenant.service` (systemd, port 8333)
 
 ## Gold Bots (separate system)

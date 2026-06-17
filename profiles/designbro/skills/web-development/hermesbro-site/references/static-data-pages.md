@@ -29,8 +29,8 @@ with open('/tmp/data.json', 'w') as f:
 
 ### 3. Deploy
 ```bash
-cp page.html /var/www/hermesbro/page.html
-chmod 644 /var/www/hermesbro/page.html
+cp page.html {WEB_ROOT}/page.html
+chmod 644 {WEB_ROOT}/page.html
 curl -s -o /dev/null -w "%{http_code}" https://hermesbro.cloud/page.html  # expect 200
 ```
 

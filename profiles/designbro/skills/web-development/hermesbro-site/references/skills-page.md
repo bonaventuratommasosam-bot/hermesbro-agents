@@ -4,7 +4,7 @@
 Client-side rendered page listing all 130+ Hermes fleet skills. Embedded JSON array, category filters, text search, IT/EN toggle.
 
 ## Location
-`/var/www/hermesbro/skills.html`
+`{WEB_ROOT}/skills.html`
 
 ## Data structure
 ```js

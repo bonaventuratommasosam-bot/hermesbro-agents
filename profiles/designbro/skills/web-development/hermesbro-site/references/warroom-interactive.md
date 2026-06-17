@@ -20,8 +20,8 @@ Both the War Room (`/warroom`) and Demo section (landing `#demo`) use **real Her
 8. End event: `{"type": "end"}`
 
 ### Key Files
-- `/opt/hermesbro-multitenant/orchestrator.py` — `run_hermes(profile, prompt)` + `AGENTS` dict
-- `/opt/hermesbro-multitenant/hermesbro_multitenant_backend.py` — `/api/warroom` endpoint + inline HTML for `/warroom` page
+- `{BACKEND_ROOT}/orchestrator.py` — `run_hermes(profile, prompt)` + `AGENTS` dict
+- `{BACKEND_ROOT}/hermesbro_multitenant_backend.py` — `/api/warroom` endpoint + inline HTML for `/warroom` page
 
 ### Orchestrator Pattern
 ```python
@@ -42,7 +42,7 @@ def run_hermes(profile: str, prompt: str) -> dict:
 ### SSE Endpoint (Python)
 ```python
 import json, sys
-sys.path.insert(0, "/opt/hermesbro-multitenant")
+sys.path.insert(0, "{BACKEND_ROOT}")
 from orchestrator import run_hermes, AGENTS
 
 @app.post("/api/warroom")

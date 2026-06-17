@@ -337,7 +337,7 @@ Generate for all pages with proper `<lastmod>`, `<changefreq>`, `<priority>`. Ho
 ## References
 
 - Monetization plan: `<HERMES_ROOT>/plans/monetizzazione-hermesbro.md`
-- HermesBro landing: `/var/www/hermesbro/index.html`
+- HermesBro landing: `{WEB_ROOT}/index.html`
 - Expired domain search: `https://www.seoprof.it/domini-scaduti/`
 - Domain availability check: `whois <domain>.it`
 - Register.it DNS guide: `references/italian-registrar-dns.md`

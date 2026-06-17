@@ -10,7 +10,7 @@ related_skills: [marketing-materials-workflow, web-page-review, affiliate-micros
 
 ## When to use
 - Editing, fixing, or updating https://hermesbro.cloud
-- Working on the multitenant backend (/opt/hermesbro-multitenant/)
+- Working on the multitenant backend ({BACKEND_ROOT}/)
 - Replacing assets (PFPs, images, icons)
 - Fixing broken buttons/links
 - Adding/modifying sections or pages
@@ -78,7 +78,7 @@ CSS for toggle:
 
 ## Site structure
 
-### Static site — `/var/www/hermesbro/`
+### Static site — `{WEB_ROOT}/`
 ```
 ├── index.html          ← main landing page (single-file, all CSS/JS inline)
 ├── register.html       ← waitlist page (3-step: sector → agents → email signup)
@@ -117,7 +117,7 @@ CSS for toggle:
 └── index.html.bak      ← backup before last edit
 ```
 
-### Multitenant backend — `/opt/hermesbro-multitenant/`
+### Multitenant backend — `{BACKEND_ROOT}/`
 ```
 ├── hermesbro_multitenant_backend.py  ← FastAPI app (uvicorn, port 8333)
 ├── templates/
@@ -134,20 +134,20 @@ The multitenant backend (port 8333) still has an older inline HTML warroom page 
 - `warroom.service` (systemd, port 8097) — standalone War Room with WebSocket
 - `hermesbro-multitenant.service` (systemd, port 8333) — backend + older warroom API
 **Restart**: `systemctl restart hermesbro-multitenant.service` (preferred — systemd manages auto-restart)
-**Manual start** (only if service is stopped): `cd /opt/hermesbro-multitenant && ./venv/bin/python hermesbro_multitenant_backend.py`
+**Manual start** (only if service is stopped): `cd {BACKEND_ROOT} && ./venv/bin/python hermesbro_multitenant_backend.py`
 **PITFALL**: Do NOT start uvicorn manually while the systemd service is running — both fight for port 8333 → `[Errno 98] address already in use`. Always check `systemctl status hermesbro-multitenant.service` first. If you killed the port with `fuser -k 8333/tcp`, the service auto-restarts — wait rather than starting manually.
 
 ### nginx config
 - `/etc/nginx/sites-enabled/hermesbro.cloud` — main site config
 - `/etc/nginx/sites-enabled/stack` — alternative/legacy config
-- Static files served directly from `/var/www/hermesbro/`
+- Static files served directly from `{WEB_ROOT}/`
 - `/api/*` and dynamic routes proxied to `127.0.0.1:8333` (uvicorn/FastAPI)
 - `/warroom` proxied to `127.0.0.1:8097` (standalone War Room service, NOT the multitenant backend)
 - `/warroom/ws/` proxied to `127.0.0.1:8097` with rewrite + WebSocket upgrade (for War Room frontend WS connections)
 - `/ws/` proxied to `127.0.0.1:8097` with WebSocket upgrade support (`proxy_http_version 1.1; proxy_set_header Upgrade $http_upgrade; proxy_set_header Connection "upgrade"; proxy_read_timeout 86400;`)
 - Dynamic pages: `/register`, `/panel` — `location = /path` (exact match, NO trailing slash)
 - SSE endpoint: `/api/warroom` — requires `proxy_buffering off`, `proxy_read_timeout 600s` (see Pitfalls)
-- `/agents/` — **static files** served directly from `/var/www/hermesbro/agents/` (`try_files $uri $uri/ =404`). NOT proxied to backend.
+- `/agents/` — **static files** served directly from `{WEB_ROOT}/agents/` (`try_files $uri $uri/ =404`). NOT proxied to backend.
 - `/dashboard/` — `location /dashboard/` (prefix match, proxied to backend)
 - Static cache zone: `static_cache` (100MB inactive=10m)
 - Cache bypass: `X-No-Cache: 1` header
@@ -334,7 +334,7 @@ Status badges: `.rd` = green (Active), `.co` = yellow (Coming Soon), `.pr` = pur
 ## Common patching patterns
 
 ### Replacing PFP images
-1. Place new image in `/var/www/hermesbro/bot-profiles/`
+1. Place new image in `{WEB_ROOT}/bot-profiles/`
 2. Patch the `<img src="...">` in the agent card's `.tp` div
 3. CSS for PFP: `.acard .tp .ic-img` — 48×48px, border-radius 12px, gold border
 
@@ -346,26 +346,26 @@ Status badges: `.rd` = green (Active), `.co` = yellow (Coming Soon), `.pr` = pur
 - **Duplicate href**: `<a href="mailto:..." href="/register">` — second `href` is silently ignored. Pick one and remove the other.
 - **Deprecating features / "not ready to ship"**: When [REDACTED — dati personali rimossi] says "non siamo pronti" or "toglilo", REMOVE the button entirely — do NOT just disable it with `pointer-events:none;opacity:0.6`. Redirect the route (302 → `/`), remove ALL links to it from every page (nav, hero, footer, inline), and verify with `grep`. [REDACTED — dati personali rimossi] prefers no button over a dead/disabled button.
 - **Internal links**: Always use NO trailing slash (`/warroom` not `/warroom/`) due to nginx exact match config
-- **Register page**: `/register` is LIVE — serves a 3-step waitlist form (sector → agents → email). Backend renders via Jinja2 template at `/opt/hermesbro-multitenant/templates/register.html`. Step 3 collects email + optional business name. POSTs to `/api/waitlist` which saves to `waitlist` table in SQLite. No token/payment step.
+- **Register page**: `/register` is LIVE — serves a 3-step waitlist form (sector → agents → email). Backend renders via Jinja2 template at `{BACKEND_ROOT}/templates/register.html`. Step 3 collects email + optional business name. POSTs to `/api/waitlist` which saves to `waitlist` table in SQLite. No token/payment step.
 - **Contact CTAs**: Hero CTA "Richiedi una demo" → `mailto:info@hermesbro.it?subject=Richiesta%20Demo%20HermesBots`. Nav "Inizia Ora" → `mailto:info@hermesbro.it?subject=Richiesta%20Info%20HermesBots`. Pricing buttons (Starter/Pro/Enterprise) → `mailto:info@hermesbro.it?subject=Interesse%20Piano%20NAME`. Email in contact section is clickable `<a href="mailto:...">`. Added "Scrivici a info@hermesbro.it" button above the contact form. Contact email: `info@hermesbro.it`.
 - **Hero CTAs**: Primary = "Guarda la War Room" (`#warroom`), Secondary = "Unisciti alla waitlist" (`/register`). No "Attiva Ora" until ready to ship bots.
 - **Waitlist API**: `POST /api/waitlist` — JSON body: `{email, sector, agents, name?}`. Saves to `waitlist` table. Returns `{status: "ok"}`.
 - **Waitlist DB table**: `waitlist` (id, email, name, sector, agents, created_at). Created in `init_db()`. Index on email.
 - **Contacts DB table**: `contacts` (id, name, email, company, phone, message, created_at). Created in `init_db()`. Used by `/api/contact` endpoint (contact form on landing page). Index on email.
-- **DB path**: SQLite at `/opt/hermesbro-multitenant/data/hermesbro.db` (NOT `/opt/hermesbro-multitenant/hermesbro.db`). DATA_DIR = BASE_DIR / "data".
-- **New landing page (not deployed)**: A dark-theme landing page exists at `/var/www/hermesbro-landing/index.html` — responsive, Lucide SVG icons, form contatto. NOT deployed per [REDACTED — dati personali rimossi]'s explicit request ("non toccare più il sito"). Keep as reference for future redesign.
+- **DB path**: SQLite at `{BACKEND_ROOT}/data/hermesbro.db` (NOT `{BACKEND_ROOT}/hermesbro.db`). DATA_DIR = BASE_DIR / "data".
+- **New landing page (not deployed)**: A dark-theme landing page exists at `{WEB_ROOT}-landing/index.html` — responsive, Lucide SVG icons, form contatto. NOT deployed per [REDACTED — dati personali rimossi]'s explicit request ("non toccare più il sito"). Keep as reference for future redesign.
 
 ### Adding a new agent
-1. Add PFP to `/var/www/hermesbro/bot-profiles/pixel-NAME.png`
+1. Add PFP to `{WEB_ROOT}/bot-profiles/pixel-NAME.png`
 2. Add card HTML in `#agentGrid` with correct `data-cat` for filter
 3. Add demo response in `demoResponses` JS object if applicable
 4. Add agent to backend's `AGENTS` list in hermesbro_multitenant_backend.py
-5. Create agent profile page at `/var/www/hermesbro/agents/{slug}.html`
+5. Create agent profile page at `{WEB_ROOT}/agents/{slug}.html`
 6. Update "Vedi agente" link in index.html card to point to `/agents/{slug}.html`
 
 ### Agent profile pages
 
-Individual profile pages for each agent at `/var/www/hermesbro/agents/{slug}.html`. Generated via batch Python script from agent data (SOUL.md personality, capabilities, tools). See `references/agent-profile-generator.md` for the full template and generator script.
+Individual profile pages for each agent at `{WEB_ROOT}/agents/{slug}.html`. Generated via batch Python script from agent data (SOUL.md personality, capabilities, tools). See `references/agent-profile-generator.md` for the full template and generator script.
 
 **Structure per page:**
 - Nav: HERMESBRO brand + "Tutti gli agenti" back link → `/#agenti`
@@ -400,7 +400,7 @@ Individual profile pages for each agent at `/var/www/hermesbro/agents/{slug}.htm
 **Pitfalls:**
 - Extensionless URLs: links MUST be `/agents/name.html` not `/agents/name`. nginx `try_files` doesn't auto-append `.html` unless configured with `$uri.html` fallback.
 - `data-en` placeholder: batch generator may leave `data-en="placeholder"` on elements — always verify and remove/fix after generation.
-- `chmod 644`: new files created by root default to 600 → nginx 403. Always `chmod 644 /var/www/hermesbro/agents/*.html` after creating pages.
+- `chmod 644`: new files created by root default to 600 → nginx 403. Always `chmod 644 {WEB_ROOT}/agents/*.html` after creating pages.
 - Backup index.html before updating "Vedi agente" links: `cp index.html index.html.bak`
 
 ### Disabling a bot vs removing from site — CRITICAL DISTINCTION
@@ -432,7 +432,7 @@ Also:
 - Remove from `<span class="a">` tags in the workflow agent list
 - Remove from pricing feature lists (replace with generic text)
 - In backend `hermesbro_multitenant_backend.py`: swap the agent ID in `SECTORS` default agents list with another agent (e.g., replace `mrrobot` with `groot`)
-- Verify: `grep -n 'AGENTNAME' /var/www/hermesbro/index.html` — only matches should be inside `<!-- -->` comments
+- Verify: `grep -n 'AGENTNAME' {WEB_ROOT}/index.html` — only matches should be inside `<!-- -->` comments
 - Agent does NOT need to be removed from the War Room JS `agents` array (it's in the backend, separate from landing page)
 - Agent does NOT need to be removed from `orchestrator.py` AGENTS dict (unused agents are harmless)
 - **ALWAYS revert** if [REDACTED — dati personali rimossi] says "rimettilo" — undo all changes, don't just re-enable the card
@@ -450,7 +450,7 @@ Also:
 - Step 3: Email (required) + business name (optional) → "Iscriviti alla waitlist"
 - POSTs JSON to `/api/waitlist` → saves to `waitlist` DB table
 - Success: "Sei in lista!" with sector/agents summary
-- Template at `/opt/hermesbro-multitenant/templates/register.html` (Jinja2 with `{{SECTORS}}` injection)
+- Template at `{BACKEND_ROOT}/templates/register.html` (Jinja2 with `{{SECTORS}}` injection)
 
 ### Panel page — client dashboard
 - 4 stat cards at top with SVG icons (total agents, active, sectors, pending)
@@ -590,7 +590,7 @@ document.querySelectorAll('#demoScenarios button').forEach(btn => {
 
 ## Pitfalls
 
-- **Bulk email replacement across site**: When changing the contact email across all HTML files, use: `find /var/www/hermesbro -name '*.html' -not -name '*.bak' -exec sed -i 's|old@email|new@email|g' {} +`. Verify with `grep -r 'old@email' /var/www/hermesbro/`. Don't forget the backend file at `/opt/hermesbro-multitenant/hermesbro_multitenant_backend.py` if it also references the email. Update the skill's Contact CTAs section after any email change. (Pattern validated 2026-06-03: changed from contact@example.com to hermesbro10@gmail.com across 13+ files.)
+- **Bulk email replacement across site**: When changing the contact email across all HTML files, use: `find {WEB_ROOT} -name '*.html' -not -name '*.bak' -exec sed -i 's|old@email|new@email|g' {} +`. Verify with `grep -r 'old@email' {WEB_ROOT}/`. Don't forget the backend file at `{BACKEND_ROOT}/hermesbro_multitenant_backend.py` if it also references the email. Update the skill's Contact CTAs section after any email change. (Pattern validated 2026-06-03: changed from contact@example.com to hermesbro10@gmail.com across 13+ files.)
 - **CRITICAL — CSS class name must match HTML**: Multiple mismatches found and fixed (2026-06-03): `.wr-demo` vs `warroom-demo`, `.ag-filter` vs `agents-filter`, `.dash .top` vs `.d-topbar`. Result: zero styles applied to affected sections. **Systematic verification**: extract all CSS class selectors from `<style>` block, extract all HTML `class="..."` attributes, diff them. Or use this one-liner:
   ```python
   import re; css=set(re.findall(r'\.([a-zA-Z][a-zA-Z0-9_-]*)', style_block)); html=set(c for m in re.findall(r'class="([^"]*)"', html) for c in m.split()); print(css - html)  # orphan CSS classes
@@ -609,9 +609,9 @@ document.querySelectorAll('#demoScenarios button').forEach(btn => {
 - **SSE endpoints through nginx**: Any Server-Sent Events endpoint (like `/api/warroom`) MUST have a dedicated nginx location block with `proxy_buffering off; proxy_cache off; chunked_transfer_encoding off; proxy_read_timeout 600s;`. Without these, nginx buffers the SSE stream and the client never receives events until the connection closes. Always place the SSE location BEFORE the generic `/api/` prefix match in nginx config (nginx uses first-match for prefix locations).
 - **NEVER use emoji characters for icons** — [REDACTED — dati personali rimossi] hates them. Always use inline SVG.
 - **Backend must be running** for register.html, panel.html, and the `/api/warroom` SSE endpoint to work. The standalone War Room at `/warroom` requires `warroom.service` (port 8097) instead.
-- **New DB tables after init**: If you add a `CREATE TABLE` to `init_db()` but the DB already exists, the table WON'T be created — `init_db()` only runs on first startup. You must create it manually: `python3 -c "import sqlite3; conn = sqlite3.connect('/opt/hermesbro-multitenant/data/hermesbro.db'); conn.executescript('CREATE TABLE IF NOT EXISTS ...'); conn.commit(); conn.close()"`. Always verify the table exists after adding one.
+- **New DB tables after init**: If you add a `CREATE TABLE` to `init_db()` but the DB already exists, the table WON'T be created — `init_db()` only runs on first startup. You must create it manually: `python3 -c "import sqlite3; conn = sqlite3.connect('{BACKEND_ROOT}/data/hermesbro.db'); conn.executescript('CREATE TABLE IF NOT EXISTS ...'); conn.commit(); conn.close()"`. Always verify the table exists after adding one.
 - **`execute_code` + `read_file` key name**: When using `read_file()` inside `execute_code` scripts, the returned dict uses key `content_returned`, NOT `content`. Using `result["content"]` raises `KeyError`. For large file rewrites (like replacing inline HTML in the backend), prefer `terminal("python3 << 'PYEOF' ...")` over `write_file` — gives full control over encoding and avoids silent issues with triple-quoted strings containing backslashes.
-- **After editing templates or backend**: `systemctl restart hermesbro-multitenant.service` (preferred). Manual fallback: `fuser -k 8333/tcp 2>/dev/null; sleep 1` then `cd /opt/hermesbro-multitenant && python3 -m uvicorn hermesbro_multitenant_backend:app --host 127.0.0.1 --port 8333`. The `sleep 1` is critical. **PITFALL**: `hermesbro-multitenant.service` is a systemd service that auto-restarts. If you start uvicorn manually while the service is running, both fight for port 8333. Always use `systemctl restart` or kill the service first with `systemctl stop hermesbro-multitenant.service`.
+- **After editing templates or backend**: `systemctl restart hermesbro-multitenant.service` (preferred). Manual fallback: `fuser -k 8333/tcp 2>/dev/null; sleep 1` then `cd {BACKEND_ROOT} && python3 -m uvicorn hermesbro_multitenant_backend:app --host 127.0.0.1 --port 8333`. The `sleep 1` is critical. **PITFALL**: `hermesbro-multitenant.service` is a systemd service that auto-restarts. If you start uvicorn manually while the service is running, both fight for port 8333. Always use `systemctl restart` or kill the service first with `systemctl stop hermesbro-multitenant.service`.
 - **PITFALL — Nested WebSocket paths in nginx**: `location /ws/` only matches paths starting with `/ws/`. If a frontend connects to a NESTED WebSocket path like `/warroom/ws/{id}`, it will NOT match `location /ws/` — the connection silently fails. You need a dedicated `location /warroom/ws/` block with `rewrite ^/warroom/(.*) /$1 break;` BEFORE the generic `/ws/` block. See `references/warroom-standalone.md` for the full nginx config with both blocks. Symptom: WebSocket status stuck on "reconnecting...", button click does nothing, no JS errors.
 
 **PITFALL — War Room setup panel hidden on page load**: The `init()` function in `warroom.html` must call `showSetupPanel()` at the end. Without it, the setup panel (topic input, agent selection, start button) stays `display: none` — the user sees the War Room page but cannot start a brainstorming. The `startBtn` exists in DOM but has zero dimensions. Symptom: "il tasto per far partire il brainstorming non funziona" — actually the entire panel is invisible. Fix: add `showSetupPanel();` to `init()`, restart `warroom.service`. See `references/warroom-standalone.md` for full details.
@@ -621,8 +621,8 @@ document.querySelectorAll('#demoScenarios button').forEach(btn => {
   3. `journalctl -u hermesbro-multitenant.service --no-pager -n 30` → find the `SyntaxError` / `ImportError` / actual Python traceback
   4. Fix the code, `systemctl restart`, verify 200
   The key insight: uvicorn loads the module ONCE at startup. A single syntax/import error in ANY part of the file kills the entire server — not just the broken route. Always check `systemctl status` first when seeing 502 on dynamic routes.
-- **After editing static files** (in `/var/www/hermesbro/`): changes are live immediately (nginx serves directly), BUT you must `chmod 644` any new file — root's default umask creates 600, and nginx runs as www-data which can't read those. Always verify: `curl -s -o /dev/null -w "%{http_code}" URL` after creating any static file.
-- **Google Search Console verification** uses HTML file upload method (not meta tag, not DNS). Upload the `googleXXXX.html` file to `/var/www/hermesbro/`, `chmod 644`, verify it's served, then click "Verifica" in GSC. This was used for both foodcostitalia and hermesbro.cloud.
+- **After editing static files** (in `{WEB_ROOT}/`): changes are live immediately (nginx serves directly), BUT you must `chmod 644` any new file — root's default umask creates 600, and nginx runs as www-data which can't read those. Always verify: `curl -s -o /dev/null -w "%{http_code}" URL` after creating any static file.
+- **Google Search Console verification** uses HTML file upload method (not meta tag, not DNS). Upload the `googleXXXX.html` file to `{WEB_ROOT}/`, `chmod 644`, verify it's served, then click "Verifica" in GSC. This was used for both foodcostitalia and hermesbro.cloud.
 - **CRITICAL — `\\n` in Python triple-quoted strings becomes a real newline**: When embedding JavaScript inside a Python `\"\"\"...\"\"\"` string (e.g., the warroom inline HTML), writing `\\n` in the Python source produces an ACTUAL newline character in the HTML output — not the literal two characters `\\n`. This breaks JS strings like `text:'line1\\nline2'` — the browser receives an unescaped real newline inside a single-quoted JS string, causing `Uncaught SyntaxError: Invalid or unexpected token`. **Fix**: use `\\\\n` in the Python source to produce literal `\\n` in the HTML output. Example: `\"text:'line1\\\\nline2'\"` in Python → `text:'line1\\nline2'` in HTML. This applies to ALL JS escape sequences (`\\n`, `\\t`, `\\\"`, etc.) — always double the backslash in Python triple-quoted strings. **Detection**: if the browser shows blank/empty page content but the HTML source is non-empty, check for broken JS — often caused by this issue. Verify with `browser_console()` for SyntaxError. **Hex verification**: when `repr()` output is ambiguous (4+ backslashes), read the file as raw bytes and check hex values: `0x5c` = backslash, `0x5c 0x5c` = two backslashes (→ `\\` in Python → `\` in output). Example: `python3 -c \"f=open(path,'rb'); c=f.read(); i=c.find(b\\\"split('\\\"); print([hex(b) for b in c[i:i+20]])\"`. **SSE parsing in browser**: The JS `buffer.split('\\n')` in the browser must split on actual newline characters (`\n` = 0x0a), NOT on literal backslash-n. If the Python source has `\\\\n` (2 backslashes), the HTML gets `\\n` (1 backslash + n), and JS `'\n'` = actual newline. If the Python source has `\\\\\\\\n` (4 backslashes), the HTML gets `\\\\n` (2 backslashes + n), and JS `'\\n'` = literal backslash-n — SSE parsing BREAKS silently (events never match). Always verify with hex check.
 - **CRITICAL — JS apostrophes in Python triple-quoted strings**: When embedding JavaScript inside a Python `"""..."""` string (e.g., the warroom inline HTML), Italian text with apostrophes (`dell'affitto`, `l'analisi`, `dell'agenzia`) WILL BREAK. Python interprets `\'` inside `"""..."""` as just `'`, so the browser receives an unescaped `'` inside a JS single-quoted string like `t:'dell'affitto'`, which terminates the string early. **Fix**: avoid apostrophes in JS string literals entirely — rephrase Italian text (`dell affitto`, `analisi`, `agenzia`), or use backtick template literals instead of single quotes for JS strings. Never try to double-escape (`\\\\'`) — it's fragile and produces `\\'` in HTML which also breaks JS.
 - **CRITICAL — Nested f-strings with escaped quotes in Python triple-quoted strings**: When writing Python code that generates JSON/YAML inside a `"""..."""` string (e.g., SSE event yields in the warroom API), nested f-strings with `\\\"` cause `SyntaxError: unexpected character after line continuation character`. **Fix**: build the dict/data first as a variable, then use string concatenation: `yield "data: " + json.dumps({"key": var}) + "\n\n"` instead of `yield f"data: {json.dumps({'key': var})}\n\n"`. This avoids all escaping issues.
@@ -649,18 +649,18 @@ See `references/bot-token-locations.md` for all bot token file paths. When [REDA
 See `references/agent-profile-generator.md` for the template, data structure, and batch generation script for individual agent profile pages at `/agents/{slug}.html`.
 
 ### Static site
-- Files served directly by nginx from `/var/www/hermesbro/`
+- Files served directly by nginx from `{WEB_ROOT}/`
 - No build/deploy pipeline — edit files in place, changes are live immediately
 - After editing: verify with `curl -sI https://hermesbro.cloud/` and browser check
 - For data listing pages (skills, catalogs): see `references/static-data-pages.md` — embedded JSON + client-side search/filter pattern
 - For skills.html specifically: see `references/skills-page.md` — data structure, regeneration, navbar conventions
 
 ### Backend
-- FastAPI app at `/opt/hermesbro-multitenant/hermesbro_multitenant_backend.py`
+- FastAPI app at `{BACKEND_ROOT}/hermesbro_multitenant_backend.py`
 - Runs on port 8333 (uvicorn), bound to 127.0.0.1
 - nginx proxies `/register`, `/panel`, `/warroom`, `/api/*` to it
-- DB: `/opt/hermesbro-multitenant/data/hermesbro.db` (SQLite)
-- Templates: `/opt/hermesbro-multitenant/templates/`
+- DB: `{BACKEND_ROOT}/data/hermesbro.db` (SQLite)
+- Templates: `{BACKEND_ROOT}/templates/`
 - Restart: kill+rerun (see Pitfalls)
 
 ### Verification checklist

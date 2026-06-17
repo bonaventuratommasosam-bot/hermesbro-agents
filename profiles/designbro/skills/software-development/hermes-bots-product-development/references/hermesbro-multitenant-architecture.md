@@ -1,8 +1,8 @@
 # HermesBro Multitenant Architecture
 
-Backend: `/opt/hermesbro-multitenant/hermesbro_multitenant_backend.py` (1634 lines)
+Backend: `{BACKEND_ROOT}/hermesbro_multitenant_backend.py` (1634 lines)
 Service: `hermesbro-multitenant.service` on port 8333
-DB: SQLite WAL mode at `/opt/hermesbro-multitenant/data/hermesbro.db`
+DB: SQLite WAL mode at `{BACKEND_ROOT}/data/hermesbro.db`
 
 ## Endpoints
 

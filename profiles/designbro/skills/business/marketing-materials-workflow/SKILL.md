@@ -147,7 +147,7 @@ for name, filename in bots:
     b64[name] = f"data:image/png;base64,{base64.b64encode(data).decode()}"
 ```
 This ensures pfps match the live site exactly. Local copies may be stale or have different filenames.
-**Pitfall**: Always download from `hermesbro.cloud/bot-profiles/` — NOT from local `/var/www/hermesbro/bot-profiles/` or `<HERMES_ROOT>/shared/marketing/bot-profiles/`. [REDACTED — dati personali rimossi] corrected this 3 times.
+**Pitfall**: Always download from `hermesbro.cloud/bot-profiles/` — NOT from local `{WEB_ROOT}/bot-profiles/` or `<HERMES_ROOT>/shared/marketing/bot-profiles/`. [REDACTED — dati personali rimossi] corrected this 3 times.
 
 **PDF conversion**:
 ```bash
@@ -480,7 +480,7 @@ Create `<HERMES_ROOT>/shared/marketing/linkedin-page.md` with:
 
 Create visual assets as HTML (no image generation needed):
 - `<HERMES_ROOT>/shared/marketing/linkedin/banner.html` — 1584×396px, dark theme with brand palette
-**Pitfall**: [REDACTED — dati personali rimossi] may reference `/home/[REDACTED — dati personali rimossi]/hermesbro-landing/index.html` — that file does NOT exist. The canonical file is `/var/www/hermesbro/index.html`.
+**Pitfall**: [REDACTED — dati personali rimossi] may reference `/home/[REDACTED — dati personali rimossi]/hermesbro-landing/index.html` — that file does NOT exist. The canonical file is `{WEB_ROOT}/index.html`.
 
 **Pitfall — No emoji on professional sites**: [REDACTED — dati personali rimossi] explicitly said "le emoji non mi piacciono sono troppo infantili". NEVER use emoji on hermesbro.cloud or any professional marketing material. Replace with SVG icons (Lucide/Heroicons style — thin strokes, gold #d4a853) or use styled text labels. The only exception is the Italian flag in the footer (brand identity).
 
@@ -527,7 +527,7 @@ CSS: `.acard .tp .ic-img{width:48px;height:48px;border-radius:12px;flex-shrink:0
 
 ### Adding Bot Images to Landing Page
 
-When new bot profile images become available ([REDACTED — dati personali rimossi] sends them), the landing page at `/var/www/hermesbro/index.html` needs TWO updates per bot:
+When new bot profile images become available ([REDACTED — dati personali rimossi] sends them), the landing page at `{WEB_ROOT}/index.html` needs TWO updates per bot:
 
 1. **Hero section** — `<div class="product-card">` uses `<div class="product-avatar">` for the circular bot image. If a bot has no image yet, it shows a colored letter fallback (e.g., `<div class="product-avatar" style="background: var(--green);">G</div>`). Replace with: `<img src="/img/botname.png" alt="BotName" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`
 
@@ -537,18 +537,18 @@ When new bot profile images become available ([REDACTED — dati personali rimos
 - `/img/` = bot profile images (contaibile.png, lawrenzo.png, etc.) — full-color photos/logos
 - `/bot-profiles/` = pixel art NFT versions (pixel-*.png) — used in specs section
 
-**Pitfall**: When updating images, verify the file exists on disk before patching HTML. Copy from source to nginx root if needed: `cp <HERMES_ROOT>/shared/marketing/bot-profiles/pixel-*.png /var/www/hermesbro/bot-profiles/`
+**Pitfall**: When updating images, verify the file exists on disk before patching HTML. Copy from source to nginx root if needed: `cp <HERMES_ROOT>/shared/marketing/bot-profiles/pixel-*.png {WEB_ROOT}/bot-profiles/`
 
 **Pitfall**: After updating the landing page, always `nginx -t && systemctl reload nginx` and verify with `curl -s https://hermesbro.cloud/ | grep 'img/botname'`.
 
-**Pitfall — Browser cache**: After replacing a bot profile image file on disk, the browser still shows the OLD image (nginx `Cache-Control: max-age=2592000`, 30 days). Fix: add `?v=N` cache-busting parameter to ALL `<img src>` references for that bot. Search ALL occurrences with `grep -n "pixel-botname" /var/www/hermesbro/index.html` — typically TWO per bot (product-avatar in hero + spec-icon in specs). Both must be updated. Without this, [REDACTED — dati personali rimossi] will say "non funziona" / "ce ancora quello vecchio".
+**Pitfall — Browser cache**: After replacing a bot profile image file on disk, the browser still shows the OLD image (nginx `Cache-Control: max-age=2592000`, 30 days). Fix: add `?v=N` cache-busting parameter to ALL `<img src>` references for that bot. Search ALL occurrences with `grep -n "pixel-botname" {WEB_ROOT}/index.html` — typically TWO per bot (product-avatar in hero + spec-icon in specs). Both must be updated. Without this, [REDACTED — dati personali rimossi] will say "non funziona" / "ce ancora quello vecchio".
 
 See `references/hermesbro-landing-page-structure.md` for full HTML structure reference.
 
 ## Privacy Policy Hosting
 
 LinkedIn apps require a Privacy Policy URL. Host at the existing nginx site:
-- `/var/www/hermesbro/privacy-policy.html` — GDPR-compliant Italian privacy policy
+- `{WEB_ROOT}/privacy-policy.html` — GDPR-compliant Italian privacy policy
 - URL: `https://hermesbro.cloud/privacy-policy.html`
 - Dark theme, branded, covers data collection, legal basis (art. 6 GDPR), retention, rights (art. 15-22), DPO contact
 
@@ -676,10 +676,10 @@ Key points:
 ## Deployment
 
 **CRITICAL — NEVER replace the existing site without explicit approval:**
-When [REDACTED — dati personali rimossi] asks to work on email/outreach/marketing, do NOT touch the existing landing page at `/var/www/hermesbro/index.html`. The site is live and [REDACTED — dati personali rimossi] has approved it. Creating a new landing page is a SEPARATE task that requires explicit approval. If you need a landing page for a campaign, deploy to a different path (e.g., `/var/www/hermesbro-landing/`) and tell [REDACTED — dati personali rimossi] it's ready for review. NEVER overwrite `index.html` without asking. (Validated 2026-06-03: [REDACTED — dati personali rimossi] said "torna assolutamente al sito che avevamo prima" and "non toccare più il sito".)
+When [REDACTED — dati personali rimossi] asks to work on email/outreach/marketing, do NOT touch the existing landing page at `{WEB_ROOT}/index.html`. The site is live and [REDACTED — dati personali rimossi] has approved it. Creating a new landing page is a SEPARATE task that requires explicit approval. If you need a landing page for a campaign, deploy to a different path (e.g., `{WEB_ROOT}-landing/`) and tell [REDACTED — dati personali rimossi] it's ready for review. NEVER overwrite `index.html` without asking. (Validated 2026-06-03: [REDACTED — dati personali rimossi] said "torna assolutamente al sito che avevamo prima" and "non toccare più il sito".)
 
 Landing page deployment:
-1. Source: `/var/www/hermesbro/index.html` (nginx root)
+1. Source: `{WEB_ROOT}/index.html` (nginx root)
 2. Domain: `hermesbro.cloud`
 3. Test: `nginx -t && systemctl reload nginx`
 4. **Image paths**: `/img/` = bot profile images (contaibile.png, lawrenzo.png, etc.), `/bot-profiles/` = pixel art NFT versions (pixel-*.png). All 10 bots have pixel art PFPs (including Machiavelli and Sentinel as of May 2026).
@@ -816,7 +816,7 @@ When [REDACTED — dati personali rimossi] asks for X/Twitter images based on bo
 ### Source PFPs
 - Pixel art PFPs (8): `<HERMES_ROOT>/shared/marketing/bot-profiles/pixel/pfp-*.png` (256×256)
 - Full-color profiles: `<HERMES_ROOT>/shared/marketing/bot-profiles/bot-profile-*.jpg`
-- Landing page pixel art (12): `/var/www/hermesbro/bot-profiles/pixel-*.png` (includes Machiavelli, Sentinel, Mr Robot)
+- Landing page pixel art (12): `{WEB_ROOT}/bot-profiles/pixel-*.png` (includes Machiavelli, Sentinel, Mr Robot)
 
 ### Pitfall — Ratatouille has NO pixel PFP
 Only has `bot-profile-ratatouille-01.jpg` (non-pixel). Use the JPG with `Image.LANCZOS` resize (not `Image.NEAREST` which is for pixel art).
@@ -881,7 +881,7 @@ The old AI-generated images at `<HERMES_ROOT>/shared/marketing/x-images/` (1536�
 
 **Pitfall**: `image_generate` tool fails with FAL pip errors even when `image_gen.provider: openai` is set. Irrelevant now — we don't use it for X images anymore.
 
-**Pitfall**: `vision_analyze` may return 404 if the current model doesn't support vision. Use `browser_vision` as fallback to inspect images, or work from character descriptions in the landing page HTML. Note: `browser_vision` also falls back to the same model — if both fail, work from character descriptions in the landing page HTML (`/var/www/hermesbro/index.html`) or bot profile HTMLs (`<HERMES_ROOT>/shared/marketing/bot-profiles/bot-profile-*.html`).
+**Pitfall**: `vision_analyze` may return 404 if the current model doesn't support vision. Use `browser_vision` as fallback to inspect images, or work from character descriptions in the landing page HTML. Note: `browser_vision` also falls back to the same model — if both fail, work from character descriptions in the landing page HTML (`{WEB_ROOT}/index.html`) or bot profile HTMLs (`<HERMES_ROOT>/shared/marketing/bot-profiles/bot-profile-*.html`).
 
 ### Video Generation Prompts (Seedance / Runway / Kling)
 
@@ -1000,12 +1000,12 @@ Also reset `published.json` tracker to `{\"published\": []}` since old entries r
 | Machiavelli | Strategia & Business | Orange (#F97316) |
 | Sentinel | Sicurezza infrastruttura | Red (#EF4444) |
 
-**Pixel art PFPs**: 12 bots have pixel art in `/var/www/hermesbro/bot-profiles/pixel-*.png`.
-Source copies at `<HERMES_ROOT>/shared/marketing/bot-profiles/pixel/pfp-*.png` (8 files) + `/var/www/hermesbro/bot-profiles/pixel-*.png` (12 files including Machiavelli, Sentinel, Mr Robot).
+**Pixel art PFPs**: 12 bots have pixel art in `{WEB_ROOT}/bot-profiles/pixel-*.png`.
+Source copies at `<HERMES_ROOT>/shared/marketing/bot-profiles/pixel/pfp-*.png` (8 files) + `{WEB_ROOT}/bot-profiles/pixel-*.png` (12 files including Machiavelli, Sentinel, Mr Robot).
 
 **Pitfall — Ratatouille has NO pixel art**: Only has `bot-profile-ratatouille-01.jpg` (non-pixel). Use the JPG for pitch decks that embed base64 images. For landing page pixel art sections, use a fallback or generate one.
 
-**Pitfall — Audit before building**: Before creating ANY marketing material (pitch deck, landing page, outreach), cross-check the bot inventory against `[REDACTED — dati personali rimossi]-stack-manager` and the actual pixel art files on disk (`ls /var/www/hermesbro/bot-profiles/` and `ls <HERMES_ROOT>/shared/marketing/bot-profiles/pixel/`). [REDACTED — dati personali rimossi]'s original pitch deck said "11 Agenti" when there should be 12, and listed Ratatouille nowhere. Always verify the full lineup before starting.
+**Pitfall — Audit before building**: Before creating ANY marketing material (pitch deck, landing page, outreach), cross-check the bot inventory against `[REDACTED — dati personali rimossi]-stack-manager` and the actual pixel art files on disk (`ls {WEB_ROOT}/bot-profiles/` and `ls <HERMES_ROOT>/shared/marketing/bot-profiles/pixel/`). [REDACTED — dati personali rimossi]'s original pitch deck said "11 Agenti" when there should be 12, and listed Ratatouille nowhere. Always verify the full lineup before starting.
 
 ## Wannabe → DesignBro Graphics Coordination
 

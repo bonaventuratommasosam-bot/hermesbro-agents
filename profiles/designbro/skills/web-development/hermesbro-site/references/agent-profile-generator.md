@@ -4,7 +4,7 @@ Batch-generates individual agent profile pages for `hermesbro.cloud/agents/`.
 
 ## How to use
 
-Run the generator script at `/tmp/gen_agent_pages.py` (or copy to a permanent location). It reads agent data from a Python dict and writes HTML files to `/var/www/hermesbro/agents/`.
+Run the generator script at `/tmp/gen_agent_pages.py` (or copy to a permanent location). It reads agent data from a Python dict and writes HTML files to `{WEB_ROOT}/agents/`.
 
 ## Agent data structure
 
@@ -48,7 +48,7 @@ Personality data comes from each bot's SOUL.md at `<HERMES_ROOT>/profiles/{name}
 
 1. Add agent data dict to the `AGENTS` list in the generator
 2. Run: `python3 /tmp/gen_agent_pages.py`
-3. Fix permissions: `chmod 644 /var/www/hermesbro/agents/*.html`
+3. Fix permissions: `chmod 644 {WEB_ROOT}/agents/*.html`
 4. Update index.html "Vedi agente" link: `href="/agents/{slug}.html"`
 5. Verify: `curl -s -o /dev/null -w "%{http_code}" https://hermesbro.cloud/agents/{slug}.html`
 
@@ -56,9 +56,9 @@ Personality data comes from each bot's SOUL.md at `<HERMES_ROOT>/profiles/{name}
 
 ```bash
 python3 /tmp/gen_agent_pages.py
-chmod 644 /var/www/hermesbro/agents/*.html
+chmod 644 {WEB_ROOT}/agents/*.html
 # Verify all return 200
-for f in /var/www/hermesbro/agents/*.html; do
+for f in {WEB_ROOT}/agents/*.html; do
   name=$(basename "$f" .html)
   code=$(curl -s -o /dev/null -w "%{http_code}" "https://hermesbro.cloud/agents/${name}.html")
   echo "$name: $code"

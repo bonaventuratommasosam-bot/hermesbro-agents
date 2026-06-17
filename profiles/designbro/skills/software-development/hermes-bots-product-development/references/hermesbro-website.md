@@ -1,10 +1,10 @@
 # HermesBro Website — Structure & Assets
 
 ## Location
-- **Site root**: `/var/www/hermesbro/` (Nginx root, NOT `/var/www/html/`)
+- **Site root**: `{WEB_ROOT}/` (Nginx root, NOT `/var/www/html/`)
 - **Domain**: hermesbro.cloud
-- **Main file**: `/var/www/hermesbro/index.html` (single-page, ~1600 lines)
-- **Images**: `/var/www/hermesbro/img/` (copied from marketing assets)
+- **Main file**: `{WEB_ROOT}/index.html` (single-page, ~1600 lines)
+- **Images**: `{WEB_ROOT}/img/` (copied from marketing assets)
 
 ## Bot Profile Images (PFPs)
 
@@ -17,7 +17,7 @@
 - **Pixel variants** (parent dir): `<HERMES_ROOT>/shared/marketing/bot-profiles/pixel-*.png`
 
 ### Deployed to site
-Images copied to `/var/www/hermesbro/img/` with consistent naming:
+Images copied to `{WEB_ROOT}/img/` with consistent naming:
 - `ratatouille.jpg` (source: bot-profile JPG — no pixel version)
 - `contaibile.png`, `lawrenzo.png`, `wannabe.png`, `designbro.png`, `ducato.png`, `el-froggo.png`, `groot.png` (source: pixel PFPs)
 
@@ -52,7 +52,7 @@ The `.product-icon` class exists in the stylesheet but the inline styles on the 
 - **Don't break the scroll animations**: Cards use `.reveal` class + IntersectionObserver for fade-in.
 
 ## Updating images
-1. Copy new images to `/var/www/hermesbro/img/` (profile PNGs) or `/var/www/hermesbro/bot-profiles/` (pixel art)
+1. Copy new images to `{WEB_ROOT}/img/` (profile PNGs) or `{WEB_ROOT}/bot-profiles/` (pixel art)
 2. For product cards: replace `<div class="product-icon" style="...">LETTER</div>` with `<img src="/img/botname.png" alt="BotName" class="product-icon" style="width:80px;height:80px;border-radius:16px;">`
 3. For spec cards: update `src="/bot-profiles/pixel-botname.png"` path
 4. Verify with `browser_console` — check `naturalWidth > 0` on all `<img>` elements

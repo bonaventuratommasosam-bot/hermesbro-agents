@@ -1,10 +1,10 @@
 # HermesBro Landing Page Structure
 
-**File**: `/var/www/hermesbro/index.html`
+**File**: `{WEB_ROOT}/index.html`
 **Domain**: `hermesbro.cloud`
-**Nginx root**: `/var/www/hermesbro/`
+**Nginx root**: `{WEB_ROOT}/`
 
-**Pitfall**: [REDACTED — dati personali rimossi] may reference `/home/[REDACTED — dati personali rimossi]/hermesbro-landing/index.html` — that file does NOT exist. The canonical file is `/var/www/hermesbro/index.html`.
+**Pitfall**: [REDACTED — dati personali rimossi] may reference `/home/[REDACTED — dati personali rimossi]/hermesbro-landing/index.html` — that file does NOT exist. The canonical file is `{WEB_ROOT}/index.html`.
 
 ## Image Paths
 
@@ -126,11 +126,11 @@ When [REDACTED — dati personali rimossi] sends an image via Telegram saying "c
 from PIL import Image
 img = Image.open('<HERMES_ROOT>/profiles/gribbito/image_cache/<filename>.jpg')
 img = img.resize((256, 256), Image.LANCZOS)
-img.save('/var/www/hermesbro/bot-profiles/pixel-<botname>.png', 'PNG')
+img.save('{WEB_ROOT}/bot-profiles/pixel-<botname>.png', 'PNG')
 ```
-3. Verify: `file /var/www/hermesbro/bot-profiles/pixel-<botname>.png` (should say 256x256 PNG)
+3. Verify: `file {WEB_ROOT}/bot-profiles/pixel-<botname>.png` (should say 256x256 PNG)
 4. **CRITICAL — Cache-bust the image references**: The browser will STILL show the old image because nginx sets `Cache-Control: max-age=2592000` (30 days). You MUST add `?v=N` to ALL `<img src>` references for that bot:
-   - Search ALL occurrences: `grep -n "pixel-<botname>" /var/www/hermesbro/index.html`
+   - Search ALL occurrences: `grep -n "pixel-<botname>" {WEB_ROOT}/index.html`
    - There are typically TWO references per bot: `<img class="product-avatar">` in hero + `<img class="spec-icon">` in specs
    - Change `pixel-<botname>.png` → `pixel-<botname>.png?v=2` in BOTH places
    - Without this, [REDACTED — dati personali rimossi] will say "no ce ancora quello vecchio" — the file IS updated on disk but the browser cache prevents it from showing
@@ -161,7 +161,7 @@ Also update the `<h2>` section heading:
 
 When [REDACTED — dati personali rimossi] provides a feature list for a bot:
 
-1. Count current features: `grep -c '<li' /var/www/hermesbro/index.html` per section
+1. Count current features: `grep -c '<li' {WEB_ROOT}/index.html` per section
 2. Replace the `<ul class="spec-tools">` block entirely with the new features
 3. Use bilingual pattern: `<li data-it="Italian text" data-en="English text">Italian text</li>`
 4. Update `spec-stats` numbers if the tool count changed (e.g., "7" → "10" for Agents)
@@ -188,12 +188,12 @@ curl -s https://hermesbro.cloud/ | grep 'img/botname'  # verify image loads
 
 - Full-color profiles: `<HERMES_ROOT>/shared/marketing/bot-profiles/` (source of truth)
 - Pixel art: `<HERMES_ROOT>/shared/marketing/bot-profiles/pixel-*.png`
-- Nginx serving: `/var/www/hermesbro/img/` and `/var/www/hermesbro/bot-profiles/`
+- Nginx serving: `{WEB_ROOT}/img/` and `{WEB_ROOT}/bot-profiles/`
 
 **Sync command** (when new images added to source):
 ```bash
-cp <HERMES_ROOT>/shared/marketing/bot-profiles/*.png /var/www/hermesbro/img/
-cp <HERMES_ROOT>/shared/marketing/bot-profiles/pixel-*.png /var/www/hermesbro/bot-profiles/
+cp <HERMES_ROOT>/shared/marketing/bot-profiles/*.png {WEB_ROOT}/img/
+cp <HERMES_ROOT>/shared/marketing/bot-profiles/pixel-*.png {WEB_ROOT}/bot-profiles/
 ```
 
 ## Updating Bot Counters
@@ -204,6 +204,6 @@ When the bot lineup changes (new bots added or removed):
 3. Update the Tools counter if tool count changed
 4. Add/remove `.product-card` entries in the hero grid
 5. Add/remove `.spec-card` entries in the specs section
-6. Sync images to nginx: `cp <HERMES_ROOT>/shared/marketing/bot-profiles/*.png /var/www/hermesbro/img/`
+6. Sync images to nginx: `cp <HERMES_ROOT>/shared/marketing/bot-profiles/*.png {WEB_ROOT}/img/`
 
 **Pitfall**: [REDACTED — dati personali rimossi] may ask to update counters from Windows files he prepared. Since we can't SCP from his machine, he needs to either paste the content or upload it himself. Always verify the current file state before applying changes — the file on VPS may already have been partially updated.
