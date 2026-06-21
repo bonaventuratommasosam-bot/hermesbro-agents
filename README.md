@@ -1,4 +1,6 @@
 # HermesBro — 11 open-source AI agents for business
+[![Beta](https://img.shields.io/badge/HermesBro-beta-8b9cb3?style=flat-square&logo=github)]()
+
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Hermes Agent](https://img.shields.io/badge/Built%20on-Hermes%20Agent-blue)](https://github.com/NousResearch/hermes-agent)
